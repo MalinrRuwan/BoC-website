@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { FloatingNav } from "@/components/ui/floating-navbar"
-import { PageBackground } from "@/components/background/page-background"
-import { HeroSection } from "@/components/sections/hero-section"
-import { AboutSection } from "@/components/sections/about-section"
-import { TimelineSection } from "@/components/sections/timeline-section"
-import { GallerySection } from "@/components/sections/gallery-section"
-import { CompetitionSection } from "@/components/sections/competition-section"
-import { TeamSection } from "@/components/sections/team-section"
-import { ContactSectionWrapper } from "@/components/sections/contact-section"
-import { FooterSection } from "@/components/sections/footer-section"
+import { useEffect, useState } from "react";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import { PageBackground } from "@/components/background/page-background";
+import { HeroSection } from "@/components/sections/hero-section";
+import { AboutSection } from "@/components/sections/about-section";
+import { TimelineSection } from "@/components/sections/timeline-section";
+import { GallerySection } from "@/components/sections/gallery-section";
+import { CompetitionSection } from "@/components/sections/competition-section";
+import { TeamSection } from "@/components/sections/team-section";
+import { ContactSectionWrapper } from "@/components/sections/contact-section";
+import { FooterSection } from "@/components/sections/footer-section";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("home")
+  const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
     { name: "Home", link: "#home" },
@@ -23,7 +23,7 @@ export default function Home() {
     { name: "Competition", link: "#competition" },
     { name: "Team", link: "#team" },
     { name: "Contact Us", link: "#contact" },
-  ]
+  ];
 
   const teamMembers = [
     {
@@ -50,7 +50,7 @@ export default function Home() {
       designation: "Treasurer",
       image: "/placeholder.svg?key=hhcs1",
     },
-  ]
+  ];
 
   const timelineEvents = [
     {
@@ -83,7 +83,7 @@ export default function Home() {
       title: "Final Round",
       description: "Present your solution to the judging panel",
     },
-  ]
+  ];
 
   const galleryImages = [
     {
@@ -96,7 +96,7 @@ export default function Home() {
       title: "Shaping the cloud with AWS",
       image: "/placeholder.svg?key=cqzg7",
     },
-  ]
+  ];
 
   const partners = [
     {
@@ -114,27 +114,30 @@ export default function Home() {
       name: "Microsoft Azure",
       logo: "/placeholder.svg?key=gjmmk",
     },
-  ]
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll("section")
-      let currentSection = "home"
+      const sections = document.querySelectorAll("section");
+      let currentSection = "home";
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.clientHeight
-        if (window.scrollY >= sectionTop - 200 && window.scrollY < sectionTop + sectionHeight - 200) {
-          currentSection = section.id
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (
+          window.scrollY >= sectionTop - 200 &&
+          window.scrollY < sectionTop + sectionHeight - 200
+        ) {
+          currentSection = section.id;
         }
-      })
+      });
 
-      setActiveSection(currentSection)
-    }
+      setActiveSection(currentSection);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <main className="relative min-h-screen bg-[#020817] overflow-hidden">
@@ -157,5 +160,5 @@ export default function Home() {
         <FooterSection />
       </div>
     </main>
-  )
+  );
 }
