@@ -89,7 +89,7 @@ export function AboutSection({ partners }: AboutSectionProps) {
               <div className="text-white md:pr-20 lg:pr-20">
                 <p className="mb-6">
                   <span className="text-blue-400">"Beauty of Cloud"</span> is an
-                  exciting ideathon that deepens participant's understanding of
+                  exciting ideathon that deepens participants' understanding of
                   cloud technologies.
                 </p>
                 <p>
