@@ -83,13 +83,13 @@ export function AboutSection({ partners }: AboutSectionProps) {
               <h2 className="text-4xl md:text-5xl font-bold text-center md:text-left mb-16">
                 <span className="aurora-gradient">
                   About <span className="">Beauty of</span>{" "}
-                  <span className="block mt-2">Cloud</span>
+                  <span className="block mt-2 ">Cloud</span>
                 </span>
               </h2>
               <div className="text-white md:pr-20 lg:pr-20">
                 <p className="mb-6">
                   <span className="text-blue-400">"Beauty of Cloud"</span> is an
-                  exciting hackathon that deepens participants' understanding of
+                  exciting ideathon that deepens participant's understanding of
                   cloud technologies.
                 </p>
                 <p>
@@ -104,7 +104,7 @@ export function AboutSection({ partners }: AboutSectionProps) {
           </ScrollAnimation>
         </div>
 
-        <div className="mt-20">
+        <div className="mt-36">
           <ScrollAnimation>
             <h3 className="text-2xl font-bold text-white mb-8">
               Official Knowledge Partners
