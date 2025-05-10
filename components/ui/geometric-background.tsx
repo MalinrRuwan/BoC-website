@@ -81,22 +81,7 @@ export function GeometricBackground() {
       ctx.stroke()
     })
 
-    // Draw some dots at intersections - brighter
-    const dots = [
-      { x: width * 0.25, y: height * 0.15, radius: 4 }, // Increased radius from 3 to 4
-      { x: width * 0.75, y: height * 0.15, radius: 4 },
-      { x: width * 0.25, y: height * 0.45, radius: 4 },
-      { x: width * 0.75, y: height * 0.45, radius: 4 },
-      { x: width * 0.25, y: height * 0.75, radius: 4 },
-      { x: width * 0.75, y: height * 0.75, radius: 4 },
-    ]
-
-    dots.forEach((dot) => {
-      ctx.beginPath()
-      ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2)
-      ctx.fillStyle = "rgba(59, 130, 246, 0.5)" // Increased opacity from 0.3 to 0.5
-      ctx.fill()
-    })
+  
   }
 
   return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-[300vh] pointer-events-none z-0" />

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FloatingNav } from "@/components/ui/floating-navbar";
 import { PageBackground } from "@/components/background/page-background";
 import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
@@ -11,19 +10,10 @@ import { CompetitionSection } from "@/components/sections/competition-section";
 import { TeamSection } from "@/components/sections/team-section";
 import { ContactSectionWrapper } from "@/components/sections/contact-section";
 import { FooterSection } from "@/components/sections/footer-section";
+import { NavbarComponent } from "@/components/sections/nav-bar";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
-
-  const navItems = [
-    { name: "Home", link: "#home" },
-    { name: "About Us", link: "#about" },
-    { name: "Timeline", link: "#timeline" },
-    { name: "Gallery", link: "#gallery" },
-    { name: "Competition", link: "#competition" },
-    { name: "Team", link: "#team" },
-    { name: "Contact Us", link: "#contact" },
-  ];
 
   const teamMembers = [
     {
@@ -147,7 +137,7 @@ export default function Home() {
       {/* Content wrapper with higher z-index */}
       <div className="relative z-10">
         {/* Navigation */}
-        <FloatingNav navItems={navItems} />
+        <NavbarComponent />
 
         {/* Page Sections */}
         <HeroSection />
