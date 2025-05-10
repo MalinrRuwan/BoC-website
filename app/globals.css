@@ -91,6 +91,11 @@ body {
   color: white;
 }
 
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top:100px;
+}
+
 @keyframes pulse {
   0%,
   100% {

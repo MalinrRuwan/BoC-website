@@ -138,7 +138,6 @@ export default function Home() {
       <div className="relative z-10">
         {/* Navigation */}
         <NavbarComponent />
-
         {/* Page Sections */}
         <HeroSection />
         <AboutSection partners={partners} />
