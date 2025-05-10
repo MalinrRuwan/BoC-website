@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
@@ -14,7 +16,77 @@
   --blue-800: #1e40af;
   --blue-900: #1e3a8a;
   --font-ibm-plex-mono: "IBM Plex Mono", monospace;
+
+  --background: 0 0% 98%;
+  --card: 0 0% 98%;
+  --popover: 0 0% 98%;
+  --sidebar: 0 0% 98%;
+  --foreground: 213 6% 10%;
+  --card-foreground: 213 6% 10%;
+  --popover-foreground: 213 6% 10%;
+  --sidebar-foreground: 213 6% 10%;
+  --primary: 212 100% 54%;
+  --sidebar-primary: 212 100% 54%;
+  --primary-foreground: 0 0% 95%;
+  --sidebar-primary-foreground: 0 0% 95%;
+  --secondary: 212 18% 85%;
+  --accent: 212 18% 85%;
+  --sidebar-accent: 212 18% 85%;
+  --secondary-foreground: 0 0% 10%;
+  --accent-foreground: 0 0% 10%;
+  --sidebar-accent-foreground: 0 0% 10%;
+  --muted: 212 12% 90%;
+  --muted-foreground: 213 9% 50%;
+  --destructive: 0 85% 54%;
+  --destructive-foreground: 0 0% 95%;
+  --border: 212 38% 85%;
+  --sidebar-border: 212 38% 85%;
+  --ring: 212 60% 80%;
+  --sidebar-ring: 212 60% 80%;
+  --input: 212 34% 85%;
+  --chart-1: 212 100% 54%;
+  --chart-2: 207 95% 51%;
+  --chart-3: 222 90% 48%;
+  --chart-4: 197 85% 45%;
+  --chart-5: 212 80% 42%;
+  --radius: 0.75rem;
 }
+
+.dark {
+  --background: 212 19% 8%;
+  --card: 212 19% 8%;
+  --popover: 212 19% 8%;
+  --sidebar: 212 19% 8%;
+  --foreground: 212 7% 95%;
+  --card-foreground: 212 7% 95%;
+  --popover-foreground: 212 7% 95%;
+  --sidebar-foreground: 212 7% 95%;
+  --primary: 212 100% 46%;
+  --sidebar-primary: 212 100% 46%;
+  --primary-foreground: 0 0% 95%;
+  --sidebar-primary-foreground: 0 0% 95%;
+  --secondary: 213 35% 10%;
+  --accent: 213 35% 10%;
+  --sidebar-accent: 213 35% 10%;
+  --secondary-foreground: 0 0% 95%;
+  --accent-foreground: 0 0% 95%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --muted: 213 23% 16%;
+  --muted-foreground: 213 11% 60%;
+  --destructive: 0 85% 51%;
+  --destructive-foreground: 0 0% 95%;
+  --border: 212 42% 17%;
+  --sidebar-border: 212 42% 17%;
+  --ring: 212 70% 22%;
+  --sidebar-ring: 212 70% 22%;
+  --input: 212 38% 17%;
+  --chart-1: 212 100% 46%;
+  --chart-2: 207 95% 49%;
+  --chart-3: 222 90% 52%;
+  --chart-4: 197 85% 55%;
+  --chart-5: 212 80% 58%;
+}
+
 
 body {
   background-color: #020817;
