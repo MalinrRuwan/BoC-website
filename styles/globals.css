@@ -92,3 +92,30 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+.aurora-gradient {
+  background: linear-gradient(90deg, #0077FF, #0088FF, #FFFFFF82, #0077FF);
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent; /* Additional support */
+  color: transparent !important; /* Use !important to override any conflicts */
+  animation: aurora-flow 8s linear infinite;
+  display: inline-block;
+  position: relative; /* Add position relative */
+  z-index: 1; /* Ensure proper stacking */
+}
+
+@keyframes aurora-flow {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 150% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
+}

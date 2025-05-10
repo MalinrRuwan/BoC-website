@@ -142,3 +142,30 @@ body {
 .font-ibm-plex-mono {
   font-family: var(--font-ibm-plex-mono);
 }
+
+/* Aurora gradient effect */
+.aurora-gradient {
+  background: linear-gradient(90deg, #0077FF, #00DDFF, #0088FF, #FFFFFF82, #0077FF);
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  color: transparent !important;
+  animation: aurora-flow 8s linear infinite;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes aurora-flow {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 150% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
+}
