@@ -84,6 +84,21 @@
   --chart-4: 197 85% 55%;
   --chart-5: 212 80% 58%;
 }
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+}
 
 
 body {
