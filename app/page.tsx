@@ -11,6 +11,7 @@ import { TeamSection } from "@/components/sections/team-section";
 import { ContactSectionWrapper } from "@/components/sections/contact-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import { NavbarComponent } from "@/components/sections/nav-bar";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -130,25 +131,29 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-[#020817] overflow-hidden">
-      {/* Background */}
+    <>
       <PageBackground />
+      <main
+        className="relative min-h-screen overflow-hidden"
+        style={{ backgroundColor: "transparent" }}
+      >
+        {/* Background */}
+        <div className="relative" style={{ zIndex: 50 }}>
+          <NavbarComponent />
+        </div>
 
-      {/* Content wrapper with higher z-index */}
-      <div className="relative z-10">
-        {/* Navigation */}
-        <NavbarComponent />
-
-        {/* Page Sections */}
-        <HeroSection />
-        <AboutSection partners={partners} />
-        <TimelineSection events={timelineEvents} />
-        <GallerySection images={galleryImages} />
-        <CompetitionSection />
-        <TeamSection teamMembers={teamMembers} />
-        <ContactSectionWrapper teamMembers={teamMembers} />
-        <FooterSection />
-      </div>
-    </main>
+        {/* Content wrapper with higher z-index */}
+        <div className="relative" style={{ zIndex: 30 }}>
+          <HeroSection />
+          <AboutSection partners={partners} />
+          <TimelineSection events={timelineEvents} />
+          <GallerySection images={galleryImages} />
+          <CompetitionSection />
+          <TeamSection teamMembers={teamMembers} />
+          <ContactSectionWrapper teamMembers={teamMembers} />
+          <FooterSection />
+        </div>
+      </main>
+    </>
   );
 }

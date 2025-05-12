@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
@@ -86,11 +84,31 @@
   --chart-4: 197 85% 55%;
   --chart-5: 212 80% 58%;
 }
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+}
 
 
 body {
   background-color: #020817;
   color: white;
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top:100px;
 }
 
 @keyframes pulse {
