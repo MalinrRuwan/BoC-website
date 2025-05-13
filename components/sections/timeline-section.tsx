@@ -20,7 +20,7 @@ export function TimelineSection({ events }: TimelineSectionProps) {
     <section id="timeline" className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto z-10 relative">
         <ScrollAnimation>
-          <h2 className="text-4xl font-bold text-center text-white mb-16">
+          <h2 className="text-4xl font-bold text-center text-white">
             Event <span className="text-blue-400">Timeline</span>
           </h2>
         </ScrollAnimation>
