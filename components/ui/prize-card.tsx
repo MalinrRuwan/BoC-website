@@ -36,7 +36,10 @@ export function PrizeCard({
       /> */}
 
       {/* Content */}
-      <SpotlightCard className={`border-2 ${className}`} spotlightColor={color} >
+      <SpotlightCard
+        className={`border-2 bg-gradient-to-br from-blue-950 via-black to-blue-950 sm:p-12  ${className}`}
+        spotlightColor={color}
+      >
         <div className="relative z-10 text-center">
           <motion.div
             className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"

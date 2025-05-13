@@ -99,7 +99,7 @@ export function CompetitionSection() {
               position={1}
               amount="Rs. 50,000"
               color="#FFD700"
-              className=" border-yellow-400 sm:bottom-8 order-first sm:order-none"
+              className=" border-yellow-400 sm:bottom-8 order-first sm:order-none "
             />
             <PrizeCard
               position={3}
