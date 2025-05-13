@@ -148,8 +148,8 @@ export default function Home() {
           <HeroSection />
           <AboutSection />
           <TimelineSection events={timelineEvents} />
-          <GallerySection images={galleryImages} />
           <CompetitionSection />
+          <GallerySection images={galleryImages} />
           <PartnerSection partners={partners} />
           <TeamSection teamMembers={teamMembers} />
           <ContactSectionWrapper teamMembers={teamMembers} />
