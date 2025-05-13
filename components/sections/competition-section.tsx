@@ -4,6 +4,9 @@ import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import { GlowingStarsBackgroundCard } from "@/components/ui/glowing-stars";
 import { PrizeCard } from "@/components/ui/prize-card";
 import SpotlightCard from "../ui/spotlight-card";
+import { BackgroundGradient } from "../ui/background-gradient";
+import { Card } from "../ui/card";
+import { GlowingEffect } from "../ui/glowing-effect";
 
 export function CompetitionSection() {
   return (
@@ -29,7 +32,14 @@ export function CompetitionSection() {
 
           <div className="space-y-12">
             <ScrollAnimation direction="left">
-              <GlowingStarsBackgroundCard>
+              <Card className=" backdrop-blur-[2px] bg-transparent rounded-[22px]  border-blue-900">
+                <GlowingEffect
+                  spread={64}
+                  glow={true}
+                  disabled={false}
+                  proximity={512}
+                  inactiveZone={0.01}
+                />
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-white mb-4">
                     Round 1: Ideation & Solution Design
@@ -42,11 +52,18 @@ export function CompetitionSection() {
                     security, and cost-effectiveness.
                   </p>
                 </div>
-              </GlowingStarsBackgroundCard>
+              </Card>
             </ScrollAnimation>
 
             <ScrollAnimation direction="right" delay={0.2}>
-              <GlowingStarsBackgroundCard>
+              <Card className=" backdrop-blur-[2px] bg-transparent rounded-[22px]  border-blue-900">
+                <GlowingEffect
+                  spread={64}
+                  glow={true}
+                  disabled={false}
+                  proximity={512}
+                  inactiveZone={0.01}
+                />
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-white mb-4">
                     Round 2: Final Presentation & Pitch
@@ -59,7 +76,7 @@ export function CompetitionSection() {
                     solutions will be recognized and awarded.
                   </p>
                 </div>
-              </GlowingStarsBackgroundCard>
+              </Card>
             </ScrollAnimation>
           </div>
         </div>
@@ -72,9 +89,24 @@ export function CompetitionSection() {
           </ScrollAnimation>
 
           <div className="flex flex-wrap justify-center gap-4 ">
-            <PrizeCard position={2} amount="Rs. 30,000" color="#C0C0C0" className="border-neutral-400" />
-            <PrizeCard position={1} amount="Rs. 50,000" color="#FFD700" className=" border-yellow-400 sm:bottom-8 order-first sm:order-none"/>
-            <PrizeCard position={3} amount="Rs. 15,000" color="#CD7F32" className="border-orange-400" />
+            <PrizeCard
+              position={2}
+              amount="Rs. 30,000"
+              color="#C0C0C0"
+              className="border-neutral-400"
+            />
+            <PrizeCard
+              position={1}
+              amount="Rs. 50,000"
+              color="#FFD700"
+              className=" border-yellow-400 sm:bottom-8 order-first sm:order-none"
+            />
+            <PrizeCard
+              position={3}
+              amount="Rs. 15,000"
+              color="#CD7F32"
+              className="border-orange-400"
+            />
           </div>
         </div>
       </div>

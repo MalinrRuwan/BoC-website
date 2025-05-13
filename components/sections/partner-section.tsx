@@ -19,10 +19,10 @@ export default function PartnerSection({partners}:PartnerSectionProps){
     return (
       <div className="mt-36">
         <ScrollAnimation>
-          <h3 className="text-2xl font-bold text-white mb-8">
-            Official Knowledge Partners
-          </h3>
-        </ScrollAnimation>
+                  <h2 className="text-4xl font-bold text-center text-white mb-10 sm:mb-0">
+                    Our <span className="text-blue-400">Partners</span>
+                  </h2>
+                </ScrollAnimation>
 
         <div className="grid grid-cols-3 md:grid-cols-3 gap-8">
           {partners.map((partner, index) => (
