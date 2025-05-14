@@ -1,11 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GeometricBackground } from "@/components/ui/geometric-background";
 import { AuroraBackground } from "../ui/aurora-background";
 
 export function PageBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<number>(0);
+  
+  // Set the height after component mounts
+  useEffect(() => {
+    setHeight(window.outerHeight);
+  }, []);
 
   // Implement our own parallax effect
   useEffect(() => {
@@ -29,10 +35,9 @@ export function PageBackground() {
       {/* Geometric background with manual parallax */}
       <div
         ref={containerRef}
-        className="absolute inset-0"
-        style={{
+        className="absolute inset-0"        style={{
           zIndex: 5,
-          height: window.outerHeight  , // Make it much taller than viewport
+          height: height || "100vh", // Use state value, fallback to 100vh
         }}
       >
         <GeometricBackground />
