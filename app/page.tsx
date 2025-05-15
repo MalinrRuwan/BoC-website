@@ -126,7 +126,7 @@ export default function Home() {
         style={{ backgroundColor: "transparent" }}
       >
         {/* Background */}
-        <div className="relative" style={{ zIndex: 50 }}>
+        <div className="relative p-10 sm:p-10" style={{ zIndex: 50 }}>
           <NavbarComponent />
         </div>
 
