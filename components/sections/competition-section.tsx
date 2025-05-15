@@ -16,7 +16,7 @@ export function CompetitionSection() {
     >
       <div className="container mx-auto z-10">
         <ScrollAnimation>
-          <h2 className="text-4xl font-bold text-center text-white mb-16">
+          <h2 className="text-4xl sm:text-6xl font-bold text-center text-white mb-16">
             Event <span className="text-blue-400">Plan</span>
           </h2>
         </ScrollAnimation>
@@ -83,7 +83,7 @@ export function CompetitionSection() {
 
         <div className="mt-20">
           <ScrollAnimation>
-            <h2 className="text-4xl font-bold text-center text-white mb-28">
+            <h2 className="text-4xl sm:text-6xl font-bold text-center text-white mb-28">
               Prize <span className="text-blue-400">Pool</span>
             </h2>
           </ScrollAnimation>

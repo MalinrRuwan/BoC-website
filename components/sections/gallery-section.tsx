@@ -138,8 +138,8 @@ export function GallerySection({
       {" "}
       <div className="container mx-auto z-10 max-w-7xl">
         <ScrollAnimation>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="aurora-gradient">Gallery</span>
+          <h2 className="text-4xl font-extrabold md:text-6xl text-center mb-16">
+            <span className="">Gallery</span>
           </h2>
         </ScrollAnimation>
 

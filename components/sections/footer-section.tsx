@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export function FooterSection() {
   return (
-    <footer className="relative py-8 px-4 sm:px-6 lg:px-8 border-t border-blue-900/30">
+    <footer className="relative py-8 px-4 sm:px-6 lg:px-8 border-t border-r border-l sm:pb-4 top-10 sm:top-4 border-blue-900/60 mx-4 rounded-xl backdrop-blur-sm pb-16">
       <div className="container mx-auto z-10">
         <motion.div
           className="flex flex-col md:flex-row justify-between items-center"
@@ -14,18 +14,20 @@ export function FooterSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="mb-4 md:mb-0">
+          <div className="mb-4 flex flex-row items-center md:mb-0">
             <Image
-              src="/abstract-cloud-logo.png"
+              src="logo.png"
               alt="Beauty of Cloud"
-              width={40}
-              height={40}
-              className="inline-block mr-2"
+              width={100}
+              height={100}
+              className="mr-2"
             />
-            <span className="text-white font-semibold">Beauty of Cloud</span>
+            <span className="relative bottom-3 text-xl font-ibm-plex-mono font-bold text-blue-300 right-2">Beauty of cloud</span>
           </div>
+          <hr className="text-white"></hr>
+          <span className="text-muted-foreground ">˚Copyright</span>
 
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 relative sm:bottom-3">
             <motion.a
               href="#"
               className="text-blue-300 hover:text-white transition-colors"

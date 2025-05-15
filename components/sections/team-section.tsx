@@ -28,7 +28,7 @@ export function TeamSection({ teamMembers }: TeamSectionProps) {
     <section id="team" className="relative py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto z-10">
         <ScrollAnimation>
-          <h2 className="text-4xl font-bold text-center text-white mb-16">
+          <h2 className="text-4xl sm:text-6xl font-bold text-center text-white mb-16">
             Our <span className="text-blue-400">Team</span>
           </h2>
         </ScrollAnimation>
