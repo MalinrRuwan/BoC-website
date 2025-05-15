@@ -1,38 +1,35 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type React from "react"
+import "./globals.css"
+import type { Metadata } from "next"
+import { Inter, IBM_Plex_Mono } from "next/font/google"
+import { Poppins } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({ subsets: ["latin"] })
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "600"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  variable: "--font-ibm-plex-mono",
+})
 
 export const metadata: Metadata = {
-  title: "Beauty of cloud",
-  description: "Sri Lanka's First Student-led Cloud Ideathon",
-  icons: {
-    icon: '/boclogo.png',
-    apple: '/boclogo.png',
-  },
-};
+  title: "Beauty of Cloud",
+  description: "Sri Lanka's first Student-led cloud hackathon",
+    generator: 'v0.dev'
+}
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"]
+});
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className="dark">
+      <body className={`${poppins.className} ${ibmPlexMono.variable}`}>{children}</body>
     </html>
-  );
+  )
 }

@@ -1,0 +1,20 @@
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.geometric-circle {
+  stroke: rgba(59, 130, 246, 0.3);
+  fill: transparent;
+  animation: pulse-slow 10s infinite;
+}
+
+.geometric-line {
+  stroke: rgba(59, 130, 246, 0.2);
+  stroke-width: 1px;
+}
