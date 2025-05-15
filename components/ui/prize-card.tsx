@@ -37,7 +37,10 @@ export function PrizeCard({
 
       {/* Content */}
       <SpotlightCard
-        className={`border-2 bg-gradient-to-br from-blue-950 via-black to-blue-950 sm:p-12  ${className}`}
+        className={cn(
+          `border-2  sm:p-12  ${className}`,
+          `bg-gradient-to-br from-[${color}] from-1% via-transparent via-50% to-[${color}] to-99%`
+        )}
         spotlightColor={color}
       >
         <div className="relative z-10 text-center">
@@ -55,9 +58,11 @@ export function PrizeCard({
               ? "2nd place"
               : "3rd place"}
           </h3>
-          <p className="text-xl font-bold" style={{ color }}>
+          <p className="text-2xl font-bold" style={{ color }}>
             {amount}
           </p>
+          <p> +</p>
+          <p>Digital Certificates</p>
         </div>
       </SpotlightCard>
     </motion.div>
