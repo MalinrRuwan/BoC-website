@@ -69,7 +69,7 @@ export function AboutSection() {
             </div>
           </ScrollAnimation>
 
-          <ScrollAnimation direction="right" delay={0.2}>
+          <ScrollAnimation direction="right" delay={0.2} className="order-first sm:order-none">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-center md:text-left mb-16">
                 <span className="aurora-gradient">
