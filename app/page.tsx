@@ -75,20 +75,7 @@ export default function Home() {
       title: "Final Round",
       description: "Present your solution to the judging panel",
     },
-  ];
-
-  const galleryImages = [
-    {
-      id: 1,
-      title: "Introduction to AWS Technologies",
-      image: "/placeholder.svg?key=gu87l",
-    },
-    {
-      id: 2,
-      title: "Shaping the cloud with AWS",
-      image: "/placeholder.svg?key=cqzg7",
-    },
-  ];
+  ];  // Gallery images are now defined directly in the GallerySection component
 
   const partners = [
     {
@@ -148,9 +135,8 @@ export default function Home() {
           <HeroSection />
           <AboutSection />
           <TimelineSection events={timelineEvents} />
+          <GallerySection images={[]} />
           <CompetitionSection />
-          <GallerySection images={galleryImages} />
-          <PartnerSection partners={partners} />
           <TeamSection teamMembers={teamMembers} />
           <ContactSectionWrapper teamMembers={teamMembers} />
           <FooterSection />
