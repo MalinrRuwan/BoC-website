@@ -12,6 +12,7 @@ import { ContactSectionWrapper } from "@/components/sections/contact-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import { NavbarComponent } from "@/components/sections/nav-bar";
 import { AuroraBackground } from "@/components/ui/aurora-background";
+import AboutCsChapter from "@/components/sections/about-cs-chapter-section";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -136,6 +137,7 @@ export default function Home() {
           <TimelineSection events={timelineEvents} />
           <GallerySection images={[]} />
           <CompetitionSection />
+          <AboutCsChapter/>
           <TeamSection teamMembers={teamMembers} />
           <ContactSectionWrapper teamMembers={teamMembers} />
           <FooterSection />

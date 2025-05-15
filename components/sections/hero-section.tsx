@@ -86,27 +86,30 @@ export function HeroSection() {
                   }}
                 />
               </motion.div>
-            </div>
-
-            {/* Actual image on top */}
+            </div>            {/* Actual image on top */}
             <motion.div
               className="relative z-10"
-              animate={{
+              initial={{ opacity: 0, scale: 1.2, x: 50 }}
+              animate={{ 
                 y: [0, -10, 0],
+                opacity: 1, 
+                scale: 1,
+                x: 0 
               }}
               transition={{
                 repeat: Number.POSITIVE_INFINITY,
                 duration: 4,
                 ease: "easeInOut",
+                opacity: { duration: 0.8, ease: "easeOut" },
+                scale: { duration: 1, ease: "easeOut" },
+                x: { duration: 1, ease: "easeOut" },
               }}
             >
               <Image
-
                 src="/hero-3dcloud.png"
                 alt="Cloud Computing"
                 width={320}
                 height={320}
-
               />
             </motion.div>
           </div>
