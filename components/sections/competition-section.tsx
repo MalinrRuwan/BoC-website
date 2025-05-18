@@ -39,6 +39,7 @@ export function CompetitionSection() {
                   disabled={false}
                   proximity={512}
                   inactiveZone={0.01}
+                  variant="white"
                 />
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-white mb-4">
@@ -63,6 +64,7 @@ export function CompetitionSection() {
                   disabled={false}
                   proximity={512}
                   inactiveZone={0.01}
+                  variant="white"
                 />
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-white mb-4">
@@ -93,7 +95,7 @@ export function CompetitionSection() {
               position={2}
               amount="Rs. 30,000"
               color="#C0C0C0"
-              className="border-neutral-200"
+              className="border-neutral-500"
               cardClassName="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
 
 from-neutral-800
