@@ -94,18 +94,33 @@ export function CompetitionSection() {
               amount="Rs. 30,000"
               color="#C0C0C0"
               className="border-neutral-200"
+              cardClassName="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
+
+from-neutral-800
+via-transparent
+to-blue-950"
             />
             <PrizeCard
               position={1}
               amount="Rs. 50,000"
               color="#FFD700"
               className=" border-yellow-400 sm:bottom-8 order-first sm:order-none"
+              cardClassName="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
+
+from-yellow-400/40
+via-transparent
+to-blue-950/50"
             />
             <PrizeCard
               position={3}
               amount="Rs. 15,000"
               color="#CD7F32"
               className="border-orange-400"
+              cardClassName="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
+
+from-orange-400/40
+via-transparent
+to-blue-950/50"
             />
           </div>
         </div>

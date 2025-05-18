@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import SpotlightCard from "./spotlight-card";
 import { HTMLProps } from "react";
+import { AuroraBackground } from "./aurora-background";
 
 interface PrizeCardProps {
   position: number;
   amount: string;
   color: string;
   className?: HTMLProps<HTMLElement>["className"];
+  cardClassName?: HTMLProps<HTMLElement>["className"];
 }
 
 export function PrizeCard({
@@ -17,29 +19,18 @@ export function PrizeCard({
   amount,
   color,
   className,
+  cardClassName
 }: PrizeCardProps) {
   return (
     <motion.div
       whileHover={{ y: -5, scale: 1.02 }}
       className={cn("relative p-8 rounded-xl overflow-hidden", className)}
     >
-      {/* Background with gradient */}
-      {/* <div
-        className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-blue-800/20 backdrop-blur-sm border-2 rounded-xl"
-        style={{ borderColor: color }}
-      /> */}
-
-      {/* Glow effect */}
-      {/* <div
-        className="absolute inset-0 opacity-20 rounded-xl"
-        style={{ backgroundColor: color, filter: "blur(20px)" }}
-      /> */}
-
       {/* Content */}
       <SpotlightCard
         className={cn(
           `border-2  sm:p-12  ${className}`,
-          `bg-gradient-to-br from-[${color}] from-1% via-transparent via-50% to-[${color}] to-99%`
+          cardClassName
         )}
         spotlightColor={color}
       >
