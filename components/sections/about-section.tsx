@@ -5,21 +5,12 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-interface Partner {
-  id: number;
-  name: string;
-  logo: string;
-}
 
-interface AboutSectionProps {
-  partners: Partner[];
-}
-
-export function AboutSection({ partners }: AboutSectionProps) {
+export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8"
+      className="relative py-10 px-4 sm:px-6 lg:px-8"
     >
       <div className="container mx-auto z-10">
         <ScrollAnimation>
@@ -78,7 +69,7 @@ export function AboutSection({ partners }: AboutSectionProps) {
             </div>
           </ScrollAnimation>
 
-          <ScrollAnimation direction="right" delay={0.2}>
+          <ScrollAnimation direction="right" delay={0.2} className="order-first sm:order-none">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-center md:text-left mb-16">
                 <span className="aurora-gradient">
@@ -102,40 +93,6 @@ export function AboutSection({ partners }: AboutSectionProps) {
               </div>
             </div>
           </ScrollAnimation>
-        </div>
-
-        <div className="mt-36">
-          <ScrollAnimation>
-            <h3 className="text-2xl font-bold text-white mb-8">
-              Official Knowledge Partners
-            </h3>
-          </ScrollAnimation>
-
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-8">
-            {partners.map((partner, index) => (
-              <motion.div
-                key={partner.id}
-                className="flex justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                viewport={{ once: true }}
-              >
-                <HoverBorderGradient
-                  containerClassName="p-4 rounded-xl"
-                  className="p-4 rounded-xl bg-black/20 backdrop-blur-sm"
-                >
-                  <Image
-                    src={partner.logo || "/placeholder.svg"}
-                    alt={partner.name}
-                    width={80}
-                    height={80}
-                    className="mx-auto"
-                  />
-                </HoverBorderGradient>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
