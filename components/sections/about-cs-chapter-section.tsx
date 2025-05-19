@@ -25,23 +25,12 @@ const AboutCsChapter = () => {
                 </p>
               </div>
             </div>
-          </ScrollAnimation>
-
-          <ScrollAnimation direction="right" delay={0.2}>
+          </ScrollAnimation>          <ScrollAnimation direction="right" delay={0.2}>
             <div className="flex justify-center order-1 md:order-2">
               <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center">
-                <motion.div
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    repeat: Number.POSITIVE_INFINITY,
-                    duration: 4,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10"
-                >
-                  <Image                    src="/about-ieee-cs-chapter.png"
+                <div className="relative z-10">
+                  <Image
+                    src="/about-ieee-cs-chapter.png"
                     alt="IEEE CS Chapter"
                     width={300}
                     height={300}
@@ -50,7 +39,7 @@ const AboutCsChapter = () => {
                       objectFit: "cover"
                     }}
                   />
-                </motion.div>
+                </div>
               </div>
             </div>
           </ScrollAnimation>
