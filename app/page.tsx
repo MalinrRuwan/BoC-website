@@ -16,7 +16,7 @@ import PartnerSection from "@/components/sections/partner-section";
 import LogoAnimate from "@/components/ui/logo-animate";
 import Loading from "./loading";
 import AboutCsChapter from "@/components/sections/about-cs-chapter-section";
-
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -154,7 +154,7 @@ export default function Home() {
 
   return (
     <>
-    {showLoadingScreen && <Loading />}
+      <AnimatePresence>{showLoadingScreen && <Loading />}</AnimatePresence>
       <PageBackground />
       <main
         className="relative min-h-screen overflow-hidden"
