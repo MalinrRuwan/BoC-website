@@ -15,7 +15,8 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import PartnerSection from "@/components/sections/partner-section";
 import LogoAnimate from "@/components/ui/logo-animate";
 import Loading from "./loading";
-import { ImageLoadSuspender } from "@/components/ui/image-load-suspender";
+import AboutCsChapter from "@/components/sections/about-cs-chapter-section";
+
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
