@@ -13,9 +13,25 @@ import { FooterSection } from "@/components/sections/footer-section";
 import { NavbarComponent } from "@/components/sections/nav-bar";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import PartnerSection from "@/components/sections/partner-section";
+import LogoAnimate from "@/components/ui/logo-animate";
+import Loading from "./loading";
+import { ImageLoadSuspender } from "@/components/ui/image-load-suspender";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
+  const [heroContentLoaded, setHeroContentLoaded] = useState<boolean>(false); // New state for hero image
+  const [minDelayPassed, setMinDelayPassed] = useState<boolean>(false); // New state for 3s delay
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMinDelayPassed(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleHeroContentLoaded = () => {
+    setHeroContentLoaded(true);
+  };
 
   const teamMembers = [
     {
@@ -123,8 +139,21 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const contentLoaded = minDelayPassed && heroContentLoaded;
+  const showLoadingScreen = !contentLoaded;
+
+  const contentStyle = {
+    visibility: showLoadingScreen
+      ? "hidden"
+      : ("visible" as "hidden" | "visible"), // Added type assertion for clarity
+    opacity: showLoadingScreen ? 0 : 1,
+    // Optional: Add a transition for smoother appearance if desired
+    // transition: "opacity 0.5s ease-in-out, visibility 0.5s ease-in-out",
+  };
+
   return (
     <>
+    {showLoadingScreen && <Loading />}
       <PageBackground />
       <main
         className="relative min-h-screen overflow-hidden"
@@ -137,14 +166,17 @@ export default function Home() {
 
         {/* Content wrapper with higher z-index */}
         <div className="relative" style={{ zIndex: 30 }}>
-          <HeroSection />
-          <AboutSection />
-          <TimelineSection events={timelineEvents} />
-          <GallerySection images={[]} />
-          <CompetitionSection />
-          <TeamSection teamMembers={teamMembers} />
-          <ContactSectionWrapper teamMembers={teamMembers} />
-          <FooterSection />
+          {/* Loading component removed from here */}
+          <div style={contentStyle}>
+            <HeroSection onContentLoaded={handleHeroContentLoaded} />
+            <AboutSection />
+            <TimelineSection events={timelineEvents} />
+            <GallerySection images={[]} />
+            <CompetitionSection />
+            <TeamSection teamMembers={teamMembers} />
+            <ContactSectionWrapper teamMembers={teamMembers} />
+            <FooterSection />
+          </div>
         </div>
       </main>
     </>
