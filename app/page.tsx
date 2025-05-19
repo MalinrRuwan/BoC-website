@@ -13,11 +13,26 @@ import { FooterSection } from "@/components/sections/footer-section";
 import { NavbarComponent } from "@/components/sections/nav-bar";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import PartnerSection from "@/components/sections/partner-section";
+import LogoAnimate from "@/components/ui/logo-animate";
+import Loading from "./loading";
 import AboutCsChapter from "@/components/sections/about-cs-chapter-section";
 
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
+  const [heroContentLoaded, setHeroContentLoaded] = useState<boolean>(false); // New state for hero image
+  const [minDelayPassed, setMinDelayPassed] = useState<boolean>(false); // New state for 3s delay
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMinDelayPassed(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleHeroContentLoaded = () => {
+    setHeroContentLoaded(true);
+  };
 
   const teamMembers = [
     {
@@ -49,35 +64,40 @@ export default function Home() {
   const timelineEvents = [
     {
       id: 1,
-      date: "10 January 2024",
-      title: "Registration Opens",
-      description: "Begin your journey to cloud innovation",
+      date: "24 May 2024",
+      title: "AWS Workshop 2",
+      description:
+        "Level up your cloud skills! Following our successful first session, join us for a focused dive into key AWS services and practical applications relevant to Sri Lanka. Expect expert talks, insightful discussions, and valuable networking opportunities within our growing local AWS community. Don't miss this chance to learn and connect!",
     },
     {
       id: 2,
-      date: "15 February 2024",
-      title: "Orientation",
-      description: "Get familiar with the competition format and rules",
+      date: "25 May 2024",
+      title: "Registration for Ideathon",
+      description:
+        "Get ready to unleash your innovative ideas and compete for exciting opportunities. Stay tuned for the launch of registration and prepare to secure your spot in the Ideathon. Your chance to make an impact is coming!",
     },
     {
       id: 3,
-      date: "22 February 2024",
-      title: "Workshop",
-      description: "Learn essential cloud technologies from experts",
+      date: "28 May 2024",
+      title: "CoDeKu Workshop 2",
+      description:
+        "Join our hands-on workshop to gain essential web development skills. Learn from experienced instructors and build practical projects. Perfect for beginners and those looking to expand their knowledge. Start your coding journey with CoDeKu today!",
     },
     {
       id: 4,
-      date: "1 March 2024",
-      title: "Round 1",
-      description: "Ideation and solution design phase begins",
+      date: "21 June 2024",
+      title: "AWS Workshop 3",
+      description:
+        "Join our next AWS workshop for an in-depth look at advanced cloud topics and practical applications. Expect expert-led sessions and hands-on labs. Expand your AWS expertise with the Sri Lanka community!",
     },
     {
       id: 5,
-      date: "15 March 2024",
-      title: "Final Round",
-      description: "Present your solution to the judging panel",
+      date: "25 June 2024",
+      title: "CoDeKu Workshop 3",
+      description:
+        "Join our upcoming workshop to deepen your programming skills and explore new technologies. Expect hands-on learning and expert guidance. Take your coding journey to the next level with CoDeKu!",
     },
-  ];  // Gallery images are now defined directly in the GallerySection component
+  ]; // Gallery images are now defined directly in the GallerySection component
 
   const partners = [
     {
@@ -120,8 +140,21 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const contentLoaded = minDelayPassed && heroContentLoaded;
+  const showLoadingScreen = !contentLoaded;
+
+  const contentStyle = {
+    visibility: showLoadingScreen
+      ? "hidden"
+      : ("visible" as "hidden" | "visible"), // Added type assertion for clarity
+    opacity: showLoadingScreen ? 0 : 1,
+    // Optional: Add a transition for smoother appearance if desired
+    // transition: "opacity 0.5s ease-in-out, visibility 0.5s ease-in-out",
+  };
+
   return (
     <>
+    {showLoadingScreen && <Loading />}
       <PageBackground />
       <main
         className="relative min-h-screen overflow-hidden"
@@ -134,15 +167,17 @@ export default function Home() {
 
         {/* Content wrapper with higher z-index */}
         <div className="relative" style={{ zIndex: 30 }}>
-          <HeroSection />
-          <AboutSection />
-          <TimelineSection events={timelineEvents} />
-          <GallerySection images={[]} />
-          <CompetitionSection />
-          <AboutCsChapter/>
-          <TeamSection teamMembers={teamMembers} />
-          <ContactSectionWrapper teamMembers={teamMembers} />
-          <FooterSection />
+          {/* Loading component removed from here */}
+          <div style={contentStyle}>
+            <HeroSection onContentLoaded={handleHeroContentLoaded} />
+            <AboutSection />
+            <TimelineSection events={timelineEvents} />
+            <GallerySection images={[]} />
+            <CompetitionSection />
+            <TeamSection teamMembers={teamMembers} />
+            <ContactSectionWrapper teamMembers={teamMembers} />
+            <FooterSection />
+          </div>
         </div>
       </main>
     </>

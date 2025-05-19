@@ -7,14 +7,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 
+interface HeroSectionProps {
+  onContentLoaded: () => void;
+}
 
-export function HeroSection() {
+export function HeroSection({ onContentLoaded }: HeroSectionProps) {
   return (
     <section
       id="home"
-
       className="relative min-h-screen  flex items-center justify-center px-4 sm:px-6 lg:px-8"
-
     >
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -35,8 +36,9 @@ export function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono">
-            Beauty Of <span className="text-blue-400">Cloud</span>
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono tracking-tight">
+            Beauty Of{" "}
+            <span className="text-blue-400 tracking-tight">Cloud</span>
           </h1>
 
           <div className="text-xl text-blue-100 mb-8">
@@ -58,7 +60,6 @@ export function HeroSection() {
         </motion.div>
 
         <ParallaxScroll speed={-0.2} className="md:w-1/2 flex justify-center">
-
           <div className="relative w-80 h-80 flex items-center justify-center">
             {/* Shadow beneath the image */}
             <div className="absolute bottom-0 w-48 h-10 bg-black/80 rounded-full blur-xl z-0"></div>
@@ -106,10 +107,12 @@ export function HeroSection() {
               }}
             >
               <Image
+                priority={true}
                 src="/hero-3dcloud.png"
                 alt="Cloud Computing"
                 width={320}
                 height={320}
+                onLoad={onContentLoaded}
               />
             </motion.div>
           </div>

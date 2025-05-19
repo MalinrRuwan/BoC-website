@@ -51,7 +51,7 @@
 }
 
 .dark {
-  --background: 212 19% 8%;
+  --background: #020817;
   --card: 212 19% 8%;
   --popover: 212 19% 8%;
   --sidebar: 212 19% 8%;
@@ -100,7 +100,9 @@
   }
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-ibm-plex-mono), sans-serif; /* Replace 'YourFontName' */
+  font-family: var(--font-ibm-plex-mono), sans-serif;
+  letter-spacing: -0.03em;
+  /* Replace 'YourFontName'*/
 }
 
 

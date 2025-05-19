@@ -61,7 +61,7 @@ export function FooterSection() {
               </svg>
             </motion.a>
             <motion.a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61568293116395"
               className="text-blue-300 hover:text-white transition-colors"
               whileHover={{ scale: 1.2, rotate: 5 }}
             >
