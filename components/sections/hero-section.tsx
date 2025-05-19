@@ -35,8 +35,8 @@ export function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono">
-            Beauty Of <span className="text-blue-400">Cloud</span>
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono tracking-tight">
+            Beauty Of <span className="text-blue-400 tracking-tight">Cloud</span>
           </h1>
 
           <div className="text-xl text-blue-100 mb-8">
