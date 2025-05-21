@@ -139,7 +139,7 @@ export function GallerySection({
       <div className="container mx-auto z-10 max-w-7xl">
         <ScrollAnimation>
           <h2 className="text-4xl font-extrabold md:text-6xl text-center mb-16">
-            <span className="">Gallery</span>
+            Our <span className="text-blue-400">Memories</span>
           </h2>
         </ScrollAnimation>
 
