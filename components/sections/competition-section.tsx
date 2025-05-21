@@ -12,16 +12,16 @@ export function CompetitionSection() {
   return (
     <section
       id="competition"
-      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8"
+      className="relative min-h-screen py-10 px-4 sm:px-6"
     >
       <div className="container mx-auto z-10">
-        <ScrollAnimation>
+        {/* <ScrollAnimation>
           <h2 className="text-4xl sm:text-6xl font-bold text-center text-white mb-16">
             Event <span className="text-blue-400">Plan</span>
           </h2>
-        </ScrollAnimation>
+        </ScrollAnimation> */}
 
-        <div className="max-w-3xl mx-auto">
+        {/* <div className="max-w-3xl mx-auto">
           <ScrollAnimation>
             <p className="text-white/80 text-center mb-12">
               Our hackathon will feature two competitive rounds, providing
@@ -81,7 +81,7 @@ export function CompetitionSection() {
               </Card>
             </ScrollAnimation>
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-20">
           <ScrollAnimation>
