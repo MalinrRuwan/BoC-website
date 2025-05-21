@@ -95,7 +95,7 @@ export function CompetitionSection() {
               position={2}
               amount="Rs. 30,000"
               color="#C0C0C0"
-              className="border-neutral-500"
+              className="border-neutral-400"
               cardClassName="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
 
 from-neutral-800
