@@ -24,7 +24,7 @@ export default function PartnerSection({ partners }: PartnerSectionProps) {
         </h1>
       </ScrollAnimation>
 
-      <div className="grid grid-cols-3 md:grid-cols-3 gap-8 mt-10">
+      <div className="grid grid-cols-3 md:grid-cols-3 gap-8 mt-10 mx-4 ml-8">
         {partners.map((partner, index) => (
           <motion.div
             key={partner.id}

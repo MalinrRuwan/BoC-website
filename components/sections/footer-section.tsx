@@ -28,7 +28,7 @@ export function FooterSection() {
           </div>
           <hr className="border-blue-900/40 relative bottom-7 sm:hidden w-full my-4"></hr>
           <span className="text-blue-300/60 text-sm relative bottom-3 text-center sm:w-auto">
-            © 2025 Beauty of cloud. All rights reserved.
+            © 2025 Beauty of cloud - IEEE CS Chapter USJ - All rights reserved.
           </span>
 
           <div className="flex space-x-4 relative sm:bottom-3">

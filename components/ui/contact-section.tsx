@@ -125,7 +125,7 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
             </div>
             <div>
               <h4 className="text-lg font-semibold text-white">Email</h4>
-              <p className="text-blue-300">info@beautyofcloud.com</p>
+              <p className="text-blue-300">info@beautyof.cloud</p>
             </div>
           </div>
 
@@ -149,7 +149,7 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
             </div>
             <div>
               <h4 className="text-lg font-semibold text-white">Location</h4>
-              <p className="text-blue-300">Colombo, Sri Lanka</p>
+              <p className="text-blue-300">University of Sri Jayewardenapura, Sri Lanka</p>
             </div>
           </div>
         </div>
