@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export function FooterSection() {
   return (
-    <footer className="relative py-8 px-4 sm:px-6 lg:px-8 border-t border-r border-l sm:pb-4 top-16 sm:top-4 border-blue-900/60 mx-4 rounded-xl backdrop-blur-sm pb-16">
+    <footer className="relative py-8 px-4 sm:px-6 lg:px-8 border-t border-r border-l sm:pb-4 top-12 sm:top-3 border-blue-900/60 mx-4 rounded-xl backdrop-blur-sm pb-16">
       <div className="container mx-auto z-10">
         <motion.div
           className="flex flex-col md:flex-row justify-between items-center"
@@ -28,26 +28,12 @@ export function FooterSection() {
           </div>
           <hr className="border-blue-900/40 relative bottom-7 sm:hidden w-full my-4"></hr>
           <span className="text-blue-300/60 text-sm relative bottom-3 text-center sm:w-auto">
-            © 2025 Beauty of cloud. All rights reserved.
+            © 2025 Beauty of cloud - IEEE CS Chapter USJ - All rights reserved.
           </span>
 
           <div className="flex space-x-4 relative sm:bottom-3">
             <motion.a
-              href="#"
-              className="text-blue-300 hover:text-white transition-colors"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </motion.a>
-            <motion.a
-              href="#"
+              href="https://www.instagram.com/ieee_usj_cs/"
               className="text-blue-300 hover:text-white transition-colors"
               whileHover={{ scale: 1.2, rotate: 5 }}
             >
@@ -75,7 +61,7 @@ export function FooterSection() {
               </svg>
             </motion.a>
             <motion.a
-              href="#"
+              href="https://www.linkedin.com/company/ieee-cs-student-branch-chapter-university-of-sri-jayewardenepura/"
               className="text-blue-300 hover:text-white transition-colors"
               whileHover={{ scale: 1.2, rotate: 5 }}
             >

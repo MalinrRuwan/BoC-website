@@ -16,7 +16,7 @@ import PartnerSection from "@/components/sections/partner-section";
 import LogoAnimate from "@/components/ui/logo-animate";
 import Loading from "./loading";
 import AboutCsChapter from "@/components/sections/about-cs-chapter-section";
-
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -103,17 +103,25 @@ export default function Home() {
     {
       id: 1,
       name: "AWS",
-      logo: "/placeholder.svg?key=dfz7h",
+      logo: "/aws_logo.png",
+      height:200,
+      width:200,
+      
     },
     {
       id: 2,
-      name: "Google Cloud",
-      logo: "/placeholder.svg?key=priyy",
+      name: "CoDeKu",
+      logo: "/codeku_logo.png",
+      height:300,
+      width:300,
+
     },
     {
       id: 3,
-      name: "Microsoft Azure",
-      logo: "/placeholder.svg?key=gjmmk",
+      name: "HackHub",
+      logo: "/hackhub_logo.png",
+      height:100,
+      width:100,
     },
   ];
 
@@ -154,7 +162,7 @@ export default function Home() {
 
   return (
     <>
-    {showLoadingScreen && <Loading />}
+      <AnimatePresence>{showLoadingScreen && <Loading />}</AnimatePresence>
       <PageBackground />
       <main
         className="relative min-h-screen overflow-hidden"
@@ -175,6 +183,7 @@ export default function Home() {
             <GallerySection images={[]} />
             <CompetitionSection />
             <TeamSection teamMembers={teamMembers} />
+            <PartnerSection partners={partners}/>
             <ContactSectionWrapper teamMembers={teamMembers} />
             <FooterSection />
           </div>
