@@ -15,6 +15,7 @@ export function CompetitionSection() {
       className="relative min-h-screen py-10 px-4 sm:px-6"
     >
       <div className="container mx-auto z-10">
+        {/* TODO */}
         {/* <ScrollAnimation>
           <h2 className="text-4xl sm:text-6xl font-bold text-center text-white mb-16">
             Event <span className="text-blue-400">Plan</span>
