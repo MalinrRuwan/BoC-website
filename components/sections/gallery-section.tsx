@@ -38,9 +38,9 @@ export function GallerySection({
     },
     {
       id: 2,
-      title: "Quiz Winners",
-      image: "/gallery-quizz-winners.jpg",
-      description: "Quiz winners receiving recognition",
+      title: "Workshop 2 Speakers",
+      image: "/gallery-thank-you-speakers-2.jpg",
+      description: "Workshop 2 speakers",
     },
     {
       id: 3,
@@ -53,6 +53,12 @@ export function GallerySection({
       title: "Thank You to All Participants",
       image: "/gallery-thank-you-participants.jpg",
       description: "Celebrating all participants",
+    },
+    {
+      id: 5,
+      title: "Group Photo with Delegates",
+      image: "/gallery-thank-you-workshop-2.jpg",
+      description: "Thanking for Delegates",
     },
   ];
   // Store original images before duplication

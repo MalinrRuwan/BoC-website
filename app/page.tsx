@@ -102,23 +102,23 @@ export default function Home() {
   const partners = [
     {
       id: 1,
-      name: "AWS",
-      logo: "/aws_logo.png",
-      height:200,
-      width:200,
+      name: "CoDeKu DevOps Academy",
+      logo: "/codeku_logo.png",
+      height:300,
+      width:300,
       
     },
     {
       id: 2,
-      name: "CoDeKu",
-      logo: "/codeku_logo.png",
-      height:300,
-      width:300,
+      name: "AWS User Group Colombo",
+      logo: "/aws_logo.png",
+      height:200,
+      width:200,
 
     },
     {
       id: 3,
-      name: "HackHub",
+      name: "Hack SL ",
       logo: "/hackhub_logo.png",
       height:100,
       width:100,
