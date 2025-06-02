@@ -175,9 +175,8 @@ export default function Home() {
 
         {/* Content wrapper with higher z-index */}
         <div className="relative" style={{ zIndex: 30 }}>
-          {/* Loading component removed from here */}
-          <div style={contentStyle}>
-            <HeroSection onContentLoaded={handleHeroContentLoaded} />
+          {/* Loading component removed from here */}          <div style={contentStyle}>
+            <HeroSection onContentLoaded={handleHeroContentLoaded} isLoading={showLoadingScreen} />
             <AboutSection />
             <TimelineSection events={timelineEvents} />
             <GallerySection images={[]} />

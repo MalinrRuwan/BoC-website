@@ -9,9 +9,10 @@ import { TextGenerateEffect } from "../ui/text-generate-effect";
 
 interface HeroSectionProps {
   onContentLoaded: () => void;
+  isLoading?: boolean;
 }
 
-export function HeroSection({ onContentLoaded }: HeroSectionProps) {
+export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionProps) {
   return (
     <section
       id="home"
@@ -39,12 +40,12 @@ export function HeroSection({ onContentLoaded }: HeroSectionProps) {
           <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono tracking-tight">
             Beauty Of{" "}
             <span className="text-blue-400 tracking-tight">Cloud</span>
-          </h1>
-
-          <div className="text-xl text-blue-100 mb-8">
+          </h1>          <div className="text-xl text-blue-100 mb-8">
             <TextGenerateEffect
               words="Sri Lanka's first Student-led cloud Ideathon"
               className="font-normal"
+              startAnimation={!isLoading}
+              duration={0.8}
             />
           </div>
 
