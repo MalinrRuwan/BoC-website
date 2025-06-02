@@ -57,9 +57,9 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
         image: "/Sarasi Perera-programming.png",
       },
       members: [
-        { id: 4, name: "Ahinsa Wickramarathna", designation: "Member", image: "/Ruchini Ahinsa-programming.jpg" },
+        { id: 4, name: "Dinil Hansara", designation: "Member", image: "/Dinil Hansara-programming.png" },
         { id: 5, name: "Arshath Moulana", designation: "Member", image: "/Arshath Moulana-programming.png" },
-        { id: 6, name: "Dinil Hansara", designation: "Member", image: "/Dinil Hansara-programming.png" },
+        { id: 6, name: "Ahinsa Wickramarathna", designation: "Member", image: "/Ruchini Ahinsa-programming.jpg" },
         { id: 7, name: "Ganindu Deshapriya", designation: "Member", image: "/Ganindu Deshapriya-programming.jpg" },
         { id: 8, name: "Isum Perera", designation: "Member", image: "/Isum Perera-programming.jpg" },
         { id: 9, name: "Malin Dhamsara", designation: "Member", image: "/malin dhamsara-programming.jpeg" },
@@ -91,13 +91,13 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
         { id: 15, name: "Amandi Thathsarani", designation: "Member", image: "/Amandi Thathsarani-design.png" },
         { id: 16, name: "Dinil Hansara", designation: "Member", image: "/Dinil Hansara-design.png" },
         { id: 17, name: "Dumith Heshan", designation: "Member", image: "/Dumith Heshan-design.jpg" },
-        { id: 18, name: "Imalka Pabodini", designation: "Member", image: "/Imalka Pabodini-desing.jpg" },
+        { id: 18, name: "Udani Wickramanayaka", designation: "Member", image: "/Udani Wickramanayaka-design.png" },
         { id: 19, name: "Charindu Ruhansa", designation: "Member", image: "/Charindu Ruhansa-design.jpg" },
         { id: 20, name: "Malin Dhamsara", designation: "Member", image: "/malin dhamsara-programming.jpeg" },
         { id: 21, name: "Sara Zarook", designation: "Member", image: "/Sara Zarook-design.png" },
         { id: 22, name: "Pratheesh Dhanaseelan", designation: "Member", image: "/Pratheesh Dhanaseelan-design.png" },
         { id: 23, name: "Nishadi Wickramarachchi", designation: "Member", image: "/Nishadi Wickkramarachchi-design.png" },
-        { id: 24, name: "Udani Wickramanayaka", designation: "Member", image: "/Udani Wickramanayaka-design.png" },
+        { id: 24, name: "Imalka Pabodini", designation: "Member", image: "/Imalka Pabodini-desing.jpg" },
         { id: 25, name: "Tharindu Thilakarathna", designation: "Member", image: "/Tharindu Thilakarathna-design.png" },
         { id: 26, name: "Serini Puwakgolla", designation: "Member", image: "/Serini Puwakgolla-design.jpg" },
       ],
@@ -129,18 +129,18 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
         }
       ],
       members: [
-        { id: 29, name: "Ishani Ranthanayake", designation: "Member", image: "/Ishani Ranthnayake-logistics.jpeg" },
-        { id: 30, name: "Dewni Anuradi", designation: "Member", image: "/Dewni Andradi - FOC-logistics.png" },
+        { id: 29, name: "Dewni Anuradi", designation: "Member", image: "/Dewni Andradi - FOC-logistics.png" },
+        { id: 30, name: "Ishani Ranthanayake", designation: "Member", image: "/Ishani Ranthnayake-logistics.jpeg" },
         { id: 31, name: "Hansaka Hirushan", designation: "Member", image: "/Hansaka Hirushan-logistics.png" },
         { id: 32, name: "Hansani Katugampala", designation: "Member", image: "/Hansani Katugampala-logistics.png" },
         { id: 33, name: "Heshan Hansana", designation: "Member", image: "/Heshan Hansana-logistics.png" },
         { id: 34, name: "Niluni Sandumika", designation: "Member", image: "/Niluni Sandunika-logistics.jpg" },
         { id: 35, name: "Lasen Liyeth", designation: "Member", image: "/Lasen Loneth-logistics.png" },
-        { id: 36, name: "Isuri Kavya", designation: "Member", image: "/Isuri Kawya-logistics.png" },
+        { id: 36, name: "Nimangee Nethumila", designation: "Member", image: "/Nimangee Nethumila-logistics.png" },
         { id: 37, name: "Hiruna Hansaka", designation: "Member", image: "/Hiruna Hansaka fot -logistics.jpg" },
-        { id: 38, name: "Nimangee Nethumila", designation: "Member", image: "/Nimangee Nethumila-logistics.png" },
+        { id: 38, name: "Isuri Kavya", designation: "Member", image: "/Isuri Kawya-logistics.png" },
         { id: 39, name: "Sara Zarook", designation: "Member", image: "/Sara Zarook-design.png" },
-        { id: 40, name: "Salini Nanara", designation: "Member", image: "/Salini Nehara-logistics.JPG" },
+        { id: 40, name: "Salini Nanara", designation: "Member", image: "/Salini-Nehara-logistics.png" },
         { id: 41, name: "Adithya Deshanjaya", designation: "Member", image: "/Adithya Deshanjaya-logistics.png" },
       ],
       icon: (
@@ -196,10 +196,9 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
         </ScrollAnimation>
         
         {/* Teams Grid - Simple layout matching wireframe */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 overflow-visible">
-          {teamsData.map((team, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 overflow-visible">          {teamsData.map((team, index) => (
             <div key={team.name} className="relative group overflow-visible h-full">
-              <div className="bg-slate-900/90 rounded-2xl p-6 shadow-lg border border-slate-800/50 backdrop-blur-sm hover:border-slate-400/50 transition-all duration-300 flex flex-col items-center overflow-visible h-full md:min-h-[700px] lg:min-h-[700px]">
+              <div className="bg-black/20 rounded-2xl p-6 shadow-lg border border-neutral-800 backdrop-blur-sm hover:border-slate-400/50 transition-all duration-300 flex flex-col items-center overflow-visible h-full md:min-h-[500px] lg:min-h-[450px]">
                 <h3 className="text-center text-white text-xl font-bold mb-6">{team.name}</h3>
                 <div className="flex flex-col items-center w-full gap-y-4 overflow-visible h-full">
                   {/* Team Head(s) - Fixed height with consistent positioning */}
