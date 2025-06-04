@@ -88,7 +88,7 @@ export default function Home() {
       date: "21 June 2024",
       title: "AWS Workshop 3",
       description:
-        "an in-depth discussion on advanced cloud topics and practical applications. Including expert-led sessions and hands-on labs.Expand your AWS expertise with the Sri Lanka tech community!",
+        "An in-depth discussion on advanced cloud topics and practical applications. Including expert-led sessions and hands-on labs.Expand your AWS expertise with the Sri Lanka tech community!",
     },
     {
       id: 5,
