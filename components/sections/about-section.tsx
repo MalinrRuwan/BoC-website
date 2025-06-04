@@ -8,10 +8,7 @@ import { motion } from "framer-motion";
 
 export function AboutSection() {
   return (
-    <section
-      id="about"
-      className="relative py-10 px-4 sm:px-6 lg:px-8"
-    >
+    <section id="about" className="relative py-10 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto z-10">
         <ScrollAnimation>
           <p></p>
@@ -69,7 +66,11 @@ export function AboutSection() {
             </div>
           </ScrollAnimation>
 
-          <ScrollAnimation direction="right" delay={0.2} className="order-first sm:order-none">
+          <ScrollAnimation
+            direction="right"
+            delay={0.2}
+            className="order-first sm:order-none"
+          >
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-center md:text-left mb-16">
                 <span className="aurora-gradient">
@@ -79,16 +80,16 @@ export function AboutSection() {
               </h2>
               <div className="text-white md:pr-20 lg:pr-20">
                 <p className="mb-6">
-                  <span className="text-blue-400">"Beauty of Cloud"</span> is an
-                  exciting ideathon that deepens participants' understanding of
-                  cloud technologies.
+                  <span className="text-blue-400">"Beauty of Cloud"</span> is
+                  the 1st Ever Inter University Ideathon on Cloud Computing in
+                  Sri Lanka,Launched to spread knowledge on Cloud technologies
                 </p>
                 <p>
-                  It empowers tech enthusiasts to explore cloud platforms,
-                  tackle real-world challenges, and innovate with cutting-edge
-                  tools. Developers, students, and professionals will come
-                  together to learn, collaborate, and build impactful
-                  cloud-based solutions.
+                  It empowers tech enthusiasts to explore cloud platforms ,solve
+                  real- world problems , and create innovative solutions using
+                  latest technologies. This is a platform where , Developers,
+                  Students,and professionals come together to learn and work in
+                  collaboration to build impactful cloud-based solutions.
                 </p>
               </div>
             </div>
