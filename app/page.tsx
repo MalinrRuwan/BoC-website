@@ -64,35 +64,35 @@ export default function Home() {
   const timelineEvents = [
     {
       id: 1,
-      date: "24 May 2024",
+      date: "24 May 2025",
       title: "AWS Workshop 2",
       description:
         "Level up your cloud skills! Following our successful first session,A session providing detailed exploration into key services of AWS, including expert talks, insightful discussions on practical applications relevant to Sri Lanka. Also experience valuable networking opportunities within our growing local AWS community. Don't miss this initiative to learn and connect!",
     },
     {
       id: 2,
-      date: "25 May 2024",
+      date: "25 May 2025",
       title: "Registration for Ideathon",
       description:
         "Get ready to unleash your innovative ideas and compete for exciting opportunities. Stay tuned for the launch of registration and prepare to secure your spot in the Ideathon. Your chance to make an impact is coming!",
     },
     {
       id: 3,
-      date: "28 May 2024",
+      date: "7 June 2025",
       title: "CoDeKu Workshop 2",
       description:
         "A perfect start up for beginners and curious minds to expand their knowledge in coding.Join our workshop to gain hands-on experience and essential web development skills. Learn from experienced instructors and build practical projects.",
     },
     {
       id: 4,
-      date: "21 June 2024",
+      date: "June 2025",
       title: "AWS Workshop 3",
       description:
         "An in-depth discussion on advanced cloud topics and practical applications. Including expert-led sessions and hands-on labs.Expand your AWS expertise with the Sri Lanka tech community!",
     },
     {
       id: 5,
-      date: "25 June 2024",
+      date: "8 June 2025",
       title: "CoDeKu Workshop 3",
       description:
         "Join our upcoming workshop to  deepen your programming skills  and explore new technologies under expert guidance. Take your coding journey to the next level with CoDeku!",
