@@ -19,9 +19,9 @@ export default function PartnerSection({ partners }: PartnerSectionProps) {
   return (
     <div className="mt-36">
       <ScrollAnimation>
-        <h1 className="text-6xl font-bold text-center text-white mb-10 sm:mb-0">
+        <h2 className="text-4xl font-extrabold md:text-6xl text-center mb-16">
           Our <span className="text-blue-400">Partners</span>
-        </h1>
+        </h2>
       </ScrollAnimation>
 
       <div className="grid grid-cols-3 md:grid-cols-3 gap-8 mt-10 mx-4 ml-8">
