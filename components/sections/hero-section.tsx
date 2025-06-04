@@ -6,15 +6,19 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import Image from "next/image";
 import Link from "next/link";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
+import ShinyText from "../ui/shiny-text";
+import StarBorder from "../ui/star-border";
 
+interface HeroSectionProps {
+  onContentLoaded: () => void;
+  isLoading?: boolean;
+}
 
-export function HeroSection() {
+export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionProps) {
   return (
     <section
       id="home"
-
       className="relative min-h-screen  flex items-center justify-center px-4 sm:px-6 lg:px-8"
-
     >
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -35,34 +39,44 @@ export function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono">
-            Beauty Of <span className="text-blue-400">Cloud</span>
-          </h1>
-
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono tracking-tight">
+            Beauty Of{" "}
+            <span className="text-blue-400 tracking-tight">Cloud</span>
+          </h1>{" "}
           <div className="text-xl text-blue-100 mb-8">
             <TextGenerateEffect
               words="Sri Lanka's first Student-led cloud Ideathon"
               className="font-normal"
+              startAnimation={!isLoading}
+              duration={0.8}
             />
           </div>
-
-          <Link href="#about">
-            <motion.button
-              className="px-6 py-3 bg-blue-600 text-white rounded-3xl hover:bg-blue-700 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Learn More
-            </motion.button>
-          </Link>
+          <div className="flex flex-row gap-3 justify-center sm:gap-3 sm:justify-normal items-center">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="https://forms.gle/cKpctvU4uudL7T4J6">
+                <StarBorder speed="3s" className="rounded-3xl" as="button">
+                  <div className=" text-white over:bg-blue-700 transition-all mx-5">
+                    <ShinyText
+                      text="Get Registered"
+                      speed={1.5}
+                      className="text-xl"
+                    />
+                  </div>
+                </StarBorder>
+              </Link>
+            </motion.div>
+            <Link href="#about">
+              <motion.button className="px-6 py-3 bg-transparent text-gray-400 hover:text-gray-200 rounded-3xl  transition-all">
+                Learn More
+              </motion.button>
+            </Link>
+          </div>
         </motion.div>
 
         <ParallaxScroll speed={-0.2} className="md:w-1/2 flex justify-center">
-
           <div className="relative w-80 h-80 flex items-center justify-center">
             {/* Shadow beneath the image */}
             <div className="absolute bottom-0 w-48 h-10 bg-black/80 rounded-full blur-xl z-0"></div>
-
             {/* Outer glow effect */}
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
@@ -86,15 +100,16 @@ export function HeroSection() {
                   }}
                 />
               </motion.div>
-            </div>            {/* Actual image on top */}
+            </div>{" "}
+            {/* Actual image on top */}
             <motion.div
               className="relative z-10"
               initial={{ opacity: 0, scale: 1.2, x: 50 }}
-              animate={{ 
+              animate={{
                 y: [0, -10, 0],
-                opacity: 1, 
+                opacity: 1,
                 scale: 1,
-                x: 0 
+                x: 0,
               }}
               transition={{
                 repeat: Number.POSITIVE_INFINITY,
@@ -106,10 +121,12 @@ export function HeroSection() {
               }}
             >
               <Image
+                priority={true}
                 src="/hero-3dcloud.png"
                 alt="Cloud Computing"
                 width={320}
                 height={320}
+                onLoad={onContentLoaded}
               />
             </motion.div>
           </div>

@@ -1,17 +1,78 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { submitContactForm, ContactFormData } from "@/services/contact-us";
 
 interface TeamMember {
-  id: number
-  name: string
-  designation: string
-  image: string
+  id: number;
+  name: string;
+  designation: string;
+  image: string;
 }
 
 export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitContactForm(formData);
+
+      setSubmitStatus({
+        success: result.success,
+        message: result.message,
+      });
+
+      if (result.success) {
+        // Reset form if successful
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        success: false,
+        message: "An unexpected error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+      // Clear status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
+  };
+
   return (
     <div className="grid md:grid-cols-2 gap-12">
+      {/* Left column with contact info */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -21,150 +82,105 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
         <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
 
         <div className="space-y-6">
-          <div className="flex items-center">
-            <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
+          <div className="flex items-start space-x-4">
+            <div className="rounded-full bg-blue-500/20 p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-400"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
+                fill="none"
                 stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-blue-400"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
               </svg>
             </div>
             <div>
-              <p className="text-sm text-blue-300">Email</p>
-              <p className="text-white">beautyofcloud@usj.edu.lk</p>
+              <h4 className="text-lg font-semibold text-white">Phone</h4>
+              <p className="text-blue-300">+94 70 517 0403</p>
             </div>
           </div>
 
-          <div className="flex items-center">
-            <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
+          <div className="flex items-start space-x-4">
+            <div className="rounded-full bg-blue-500/20 p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-400"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
+                fill="none"
                 stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-blue-400"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </div>
             <div>
-              <p className="text-sm text-blue-300">Phone</p>
-              <p className="text-white">+94 11 2345 6789</p>
+              <h4 className="text-lg font-semibold text-white">Email</h4>
+              <p className="text-blue-300">rusirasandulhw@gmail.com</p>
             </div>
           </div>
 
-          <div className="flex items-center">
-            <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
+          <div className="flex items-start space-x-4">
+            <div className="rounded-full bg-blue-500/20 p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-400"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
+                fill="none"
                 stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-blue-400"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </div>
             <div>
-              <p className="text-sm text-blue-300">Address</p>
-              <p className="text-white">University of Sri Jayewardenepura, Nugegoda, Sri Lanka</p>
+              <h4 className="text-lg font-semibold text-white">Location</h4>
+              <p className="text-blue-300">
+                University of Sri Jayewardenapura, Sri Lanka
+              </p>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <h3 className="text-xl font-bold text-white mb-4">Follow Us</h3>
-          <div className="flex space-x-4">
-            <a
-              href="#"
-              className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/30 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-blue-400"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/30 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-blue-400"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/30 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-blue-400"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/30 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-blue-400"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-              </svg>
-            </a>
           </div>
         </div>
       </motion.div>
 
+      {/* Right column with form */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
         className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm rounded-xl border border-blue-500/20 p-8"
       >
-        <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
+        <h3 className="text-2xl font-bold text-white mb-6">
+          Send Us a Message
+        </h3>
 
-        <form className="space-y-5">
+        {submitStatus && (
+          <div
+            className={`mb-6 p-4 ${
+              submitStatus.success
+                ? "bg-green-500/20 border border-green-500/30 text-green-300"
+                : "bg-red-500/20 border border-red-500/30 text-red-300"
+            } rounded-lg`}
+          >
+            {submitStatus.message}
+          </div>
+        )}
+
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm text-blue-300">
@@ -173,6 +189,9 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
               <input
                 type="text"
                 id="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 className="w-full bg-blue-900/20 border border-blue-500/30 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 placeholder="Your name"
               />
@@ -185,6 +204,9 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
               <input
                 type="email"
                 id="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 className="w-full bg-blue-900/20 border border-blue-500/30 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 placeholder="your.email@example.com"
               />
@@ -199,6 +221,8 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
               <input
                 type="tel"
                 id="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 className="w-full bg-blue-900/20 border border-blue-500/30 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 placeholder="+94 XX XXX XXXX"
               />
@@ -211,6 +235,9 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
               <input
                 type="text"
                 id="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
                 className="w-full bg-blue-900/20 border border-blue-500/30 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 placeholder="What is this regarding?"
               />
@@ -224,6 +251,9 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
             <textarea
               id="message"
               rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              required
               className="w-full bg-blue-900/20 border border-blue-500/30 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 resize-none"
               placeholder="Your message here..."
             ></textarea>
@@ -232,15 +262,20 @@ export function ContactSection({ teamMembers }: { teamMembers: TeamMember[] }) {
           <div className="pt-2">
             <motion.button
               type="submit"
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={isSubmitting}
+              className={`px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg transition-all ${
+                isSubmitting
+                  ? "opacity-70 cursor-not-allowed"
+                  : "hover:from-blue-700 hover:to-blue-600"
+              }`}
+              whileHover={{ scale: isSubmitting ? 1 : 1.03 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </motion.button>
           </div>
         </form>
       </motion.div>
     </div>
-  )
+  );
 }

@@ -32,28 +32,48 @@ export function GallerySection({
   const galleryImagesData = [
     {
       id: 1,
-      title: "Stepping into Cloud with AWS",
-      image: "/gallery-stepping-into-cloud-with-aws.jpg",
-      description: "Cloud computing workshop with AWS experts",
+      title: "Workshop 1",
+      image: "/gallery-workshop-01.jpg",
+      description: " first Cloud computing workshop with AWS experts",
     },
     {
       id: 2,
-      title: "Quiz Winners",
-      image: "/gallery-quizz-winners.jpg",
-      description: "Quiz winners receiving recognition",
+      title: "Workshop 1",
+      image: "/gallery-workshop-02.jpg",
+      description: "Hands on practice with AWS experts",
     },
     {
       id: 3,
-      title: "Thank You to Our Speakers",
-      image: "/gallery-thank-you-speakers.jpg",
-      description: "Honoring our guest speakers",
+      title: "Workshop 1",
+      image: "/gallery-workshop-03.jpg",
+      description: "Lab facilities and resources",
     },
     {
       id: 4,
-      title: "Thank You to All Participants",
-      image: "/gallery-thank-you-participants.jpg",
-      description: "Celebrating all participants",
+      title: "Workshop 2",
+      image: "/gallery-workshop-04.jpg",
+      description: "participants engagement",
     },
+    {
+      id: 5,
+      title: "Workshop 2",
+      image: "/gallery-workshop-05.jpg",
+      description: "participants engagement",
+    },
+    {
+      id: 6,
+      title: "Workshop 2",
+      image: "/gallery-workshop-06.jpg",
+      description: "participants engagement",
+    },
+    {
+      id: 7,
+      title: "Workshop 2",
+      image: "/gallery-workshop-07.jpg",
+      description: "Lakindu from AWS user group as a speaker",
+    },
+    
+
   ];
   // Store original images before duplication
   const originalImages = externalImages?.length
@@ -138,8 +158,8 @@ export function GallerySection({
       {" "}
       <div className="container mx-auto z-10 max-w-7xl">
         <ScrollAnimation>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="aurora-gradient">Gallery</span>
+          <h2 className="text-4xl font-extrabold md:text-6xl text-center mb-16">
+            Our <span className="text-blue-400">Memories</span>
           </h2>
         </ScrollAnimation>
 
