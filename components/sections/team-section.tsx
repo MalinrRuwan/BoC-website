@@ -140,7 +140,7 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
         { id: 37, name: "Hiruna Hansaka", designation: "Member", image: "/Hiruna Hansaka fot -logistics.jpg" },
         { id: 38, name: "Isuri Kavya", designation: "Member", image: "/Isuri Kawya-logistics.png" },
         { id: 39, name: "Sara Zarook", designation: "Member", image: "/Sara Zarook-design.png" },
-        { id: 40, name: "Salini Nanara", designation: "Member", image: "/Salini-Nehara-logistics.png" },
+        { id: 40, name: "Salini Nehara", designation: "Member", image: "/Salini-Nehara-logistics.png" },
         { id: 41, name: "Adithya Deshanjaya", designation: "Member", image: "/Adithya Deshanjaya-logistics.png" },
       ],
       icon: (
@@ -198,7 +198,7 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
         {/* Teams Grid - Simple layout matching wireframe */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 overflow-visible">          {teamsData.map((team, index) => (
             <div key={team.name} className="relative group overflow-visible h-full">
-              <div className="bg-black/20 rounded-2xl p-6 shadow-lg border border-neutral-800 backdrop-blur-sm hover:border-slate-400/50 transition-all duration-300 flex flex-col items-center overflow-visible h-full md:min-h-[500px] lg:min-h-[450px]">
+              <div className="bg-black/20 rounded-2xl p-6 shadow-lg border border-blue-500/20 backdrop-blur-sm  transition-all duration-300 flex flex-col items-center overflow-visible h-full md:min-h-[500px] lg:min-h-[450px]">
                 <h3 className="text-center text-white text-xl font-bold mb-6">{team.name}</h3>
                 <div className="flex flex-col items-center w-full gap-y-4 overflow-visible h-full">
                   {/* Team Head(s) - Fixed height with consistent positioning */}
