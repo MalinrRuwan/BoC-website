@@ -4,6 +4,9 @@ import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import StarBorder from "../ui/star-border";
+import ShinyText from "../ui/shiny-text";
 
 
 export function AboutSection() {
@@ -78,7 +81,7 @@ export function AboutSection() {
                   <span className="block mt-2 ">Cloud</span>
                 </span>
               </h2>
-              <div className="text-white md:pr-20 lg:pr-20">
+              <div className="text-white md:pr-20 lg:pr-20 flex flex-col items-center">
                 <p className="mb-6">
                   <span className="text-blue-400">"Beauty of Cloud"</span> is
                   the 1st Ever Inter University Ideathon on Cloud Computing in
@@ -91,6 +94,23 @@ export function AboutSection() {
                   Students,and professionals come together to learn and work in
                   collaboration to build impactful cloud-based solutions.
                 </p>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="my-3 self-start"
+                >
+                  <Link href="https://google.com">
+                    <StarBorder speed="3s" className="rounded-3xl" as="button">
+                      <div className=" text-white over:bg-blue-700 transition-all mx-1">
+                        <ShinyText
+                          text="Delegate booklet"
+                          speed={1.5}
+                          className="text"
+                        />
+                      </div>
+                    </StarBorder>
+                  </Link>
+                </motion.div>
               </div>
             </div>
           </ScrollAnimation>
