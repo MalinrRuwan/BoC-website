@@ -99,6 +99,8 @@ export const AnimatedTooltip = ({
               src={item.image}
               alt={item.name}
               priority={item.designation.includes("Head")}
+              placeholder="blur"
+              blurDataURL={item.image}
               className={`relative rounded-full object-cover object-top transition duration-500 group-hover:z-30 group-hover:scale-110 ${
                 item.designation.includes("Head")
                   ? "h-20 w-20 lg:h-18 lg:w-18 border-2 border-blue-400 shadow-lg shadow-blue-400/30"

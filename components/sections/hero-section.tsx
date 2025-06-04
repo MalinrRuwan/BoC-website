@@ -42,7 +42,8 @@ export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionP
           <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 font-ibm-plex-mono tracking-tight">
             Beauty Of{" "}
             <span className="text-blue-400 tracking-tight">Cloud</span>
-          </h1>          <div className="text-xl text-blue-100 mb-8">
+          </h1>{" "}
+          <div className="text-xl text-blue-100 mb-8">
             <TextGenerateEffect
               words="Sri Lanka's first Student-led cloud Ideathon"
               className="font-normal"
@@ -50,30 +51,26 @@ export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionP
               duration={0.8}
             />
           </div>
-
-          
-            <div className="flex flex-row gap-3 justify-center sm:gap-3 sm:justify-normal items-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link href="https://google.com/">
+          <div className="flex flex-row gap-3 justify-center sm:gap-3 sm:justify-normal items-center">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="https://forms.gle/cKpctvU4uudL7T4J6">
                 <StarBorder speed="3s" className="rounded-3xl" as="button">
                   <div className=" text-white over:bg-blue-700 transition-all mx-5">
-                    <ShinyText text="Get Registered" speed={1.5} className="text-xl" /> 
+                    <ShinyText
+                      text="Get Registered"
+                      speed={1.5}
+                      className="text-xl"
+                    />
                   </div>
                 </StarBorder>
-                </Link>
-              </motion.div>
-              <Link href="#about">
-              <motion.button
-                className="px-6 py-3 bg-transparent text-gray-400 hover:text-gray-200 rounded-3xl  transition-all"
-              >
+              </Link>
+            </motion.div>
+            <Link href="#about">
+              <motion.button className="px-6 py-3 bg-transparent text-gray-400 hover:text-gray-200 rounded-3xl  transition-all">
                 Learn More
               </motion.button>
-              </Link>
-            </div>
-          
+            </Link>
+          </div>
         </motion.div>
 
         <ParallaxScroll speed={-0.2} className="md:w-1/2 flex justify-center">
