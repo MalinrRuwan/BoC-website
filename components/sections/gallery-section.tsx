@@ -32,34 +32,48 @@ export function GallerySection({
   const galleryImagesData = [
     {
       id: 1,
-      title: "Stepping into Cloud with AWS",
-      image: "/gallery-stepping-into-cloud-with-aws.jpg",
-      description: "Cloud computing workshop with AWS experts",
+      title: "Workshop 1",
+      image: "/gallery-workshop-01.jpg",
+      description: " first Cloud computing workshop with AWS experts",
     },
     {
       id: 2,
-      title: "Workshop 2 Speakers",
-      image: "/gallery-thank-you-speakers-2.jpg",
-      description: "Workshop 2 speakers",
+      title: "Workshop 1",
+      image: "/gallery-workshop-02.jpg",
+      description: "Hands on practice with AWS experts",
     },
     {
       id: 3,
-      title: "Thank You to Our Speakers",
-      image: "/gallery-thank-you-speakers.jpg",
-      description: "Honoring our guest speakers",
+      title: "Workshop 1",
+      image: "/gallery-workshop-03.jpg",
+      description: "Lab facilities and resources",
     },
     {
       id: 4,
-      title: "Thank You to All Participants",
-      image: "/gallery-thank-you-participants.jpg",
-      description: "Celebrating all participants",
+      title: "Workshop 2",
+      image: "/gallery-workshop-04.jpg",
+      description: "participants engagement",
     },
     {
       id: 5,
-      title: "Group Photo with Delegates",
-      image: "/gallery-thank-you-workshop-2.jpg",
-      description: "Thanking for Delegates",
+      title: "Workshop 2",
+      image: "/gallery-workshop-05.jpg",
+      description: "participants engagement",
     },
+    {
+      id: 6,
+      title: "Workshop 2",
+      image: "/gallery-workshop-06.jpg",
+      description: "participants engagement",
+    },
+    {
+      id: 7,
+      title: "Workshop 2",
+      image: "/gallery-workshop-07.jpg",
+      description: "Lakindu from AWS user group as a speaker",
+    },
+    
+
   ];
   // Store original images before duplication
   const originalImages = externalImages?.length
