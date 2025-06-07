@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { HTMLProps } from "react";
 import Image from "next/image";
@@ -20,19 +19,17 @@ export function EventCoChairCard({
   className,
   cardClassName
 }: EventCoChairCardProps) {
-  return (    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className={cn("relative", className)}
-    ><div className={cn(
+  return (
+    <div className={cn("relative", className)}>
+      <div className={cn(
         "group bg-black/20 rounded-2xl p-6 shadow-lg border border-blue-500/20 backdrop-blur-sm transition-all duration-300 flex flex-col items-center text-center min-h-[400px] justify-center",
         cardClassName
       )}>
-        <div className="flex flex-col items-center space-y-6">          {/* Profile Image */}
+        <div className="flex flex-col items-center space-y-6">
+          {/* Profile Image */}
           <div className="relative">
-            <div className="w-32 h-32 rounded-full overflow-hidden border border-blue-500/20">              <Image
+            <div className="w-32 h-32 rounded-full overflow-hidden border border-blue-500/20">
+              <Image
                 src={image}
                 alt={name}
                 fill
@@ -62,6 +59,6 @@ export function EventCoChairCard({
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

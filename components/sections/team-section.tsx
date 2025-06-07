@@ -193,21 +193,20 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
             Our <span className="text-blue-400">Team</span>
           </h2>
         </ScrollAnimation>
-        
-        {/* Event Co-Chairs Section */}
+          {/* Event Co-Chairs Section */}
         <div className="mb-20">
-          
-          
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-4xl mx-auto">
             {coChairs.map((coChair, index) => (
-              <div key={coChair.id} className="w-full md:w-80">
-                <EventCoChairCard
-                  name={coChair.name}
-                  designation={coChair.designation}
-                  image={coChair.image}
-                  className="transition-all duration-300"
-                />
-              </div>
+              <ScrollAnimation key={coChair.id} delay={index * 0.1}>
+                <div className="w-full md:w-80">
+                  <EventCoChairCard
+                    name={coChair.name}
+                    designation={coChair.designation}
+                    image={coChair.image}
+                    className="transition-all duration-300"
+                  />
+                </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
