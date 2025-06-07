@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
+import { EventCoChairCard } from "../ui/event-cochair-card";
 import Autoplay from "embla-carousel-autoplay";
 
 // Define team structure interfaces
@@ -29,20 +30,19 @@ interface TeamSectionProps {
 
 export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
   const autoplayRef = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
-  
-  // Define co-chairs at the top of the hierarchy
+    // Define co-chairs at the top of the hierarchy
   const coChairs = [
     {
       id: 1,
       name: "Rusira Sandul",
-      designation: "Co-Chair",
-      image: "/rusira-sandul.png",
+      designation: "Event Co-Chair",
+      image: "/rusira sandul-event co chair.png",
     },
     {
       id: 2,
       name: "Manuja Wimalarathne",
-      designation: "Co-Chair",
-      image: "/manuja-wimalarathne.png",
+      designation: "Event Co-Chair",
+      image: "/manuja wimalarathne-event co chair.png",
     }
   ];
   
@@ -188,12 +188,29 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
 
   return (
     <section id="team" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-visible">
-      <div className="container mx-auto z-10 overflow-visible">
-        <ScrollAnimation>
+      <div className="container mx-auto z-10 overflow-visible">        <ScrollAnimation>
           <h2 className="text-4xl sm:text-6xl font-bold text-center text-white mb-16">
             Our <span className="text-blue-400">Team</span>
           </h2>
         </ScrollAnimation>
+        
+        {/* Event Co-Chairs Section */}
+        <div className="mb-20">
+          
+          
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-4xl mx-auto">
+            {coChairs.map((coChair, index) => (
+              <div key={coChair.id} className="w-full md:w-80">
+                <EventCoChairCard
+                  name={coChair.name}
+                  designation={coChair.designation}
+                  image={coChair.image}
+                  className="transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
         
         {/* Teams Grid - Simple layout matching wireframe */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 overflow-visible">          {teamsData.map((team, index) => (
