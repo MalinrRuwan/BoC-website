@@ -8,6 +8,7 @@ import Link from "next/link";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import ShinyText from "../ui/shiny-text";
 import StarBorder from "../ui/star-border";
+import { useEffect, useRef, useState } from "react";
 
 interface HeroSectionProps {
   onContentLoaded: () => void;
@@ -15,8 +16,35 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the section is visible
+        rootMargin: "-10% 0px -10% 0px", // Add some margin for better UX
+      }
+    );
+
+    const currentSection = sectionRef.current;
+    if (currentSection) {
+      observer.observe(currentSection);
+    }
+
+    return () => {
+      if (currentSection) {
+        observer.unobserve(currentSection);
+      }
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="relative min-h-screen  flex items-center justify-center px-4 sm:px-6 lg:px-8"
     >
@@ -71,64 +99,79 @@ export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionP
               </motion.button>
             </Link>
           </div>
-        </motion.div>
-
-        <ParallaxScroll speed={-0.2} className="md:w-1/2 flex justify-center">
+        </motion.div>        <ParallaxScroll speed={-0.2} className="md:w-1/2 flex justify-center">
           <div className="relative w-80 h-80 flex items-center justify-center">
             {/* Shadow beneath the image */}
             <div className="absolute bottom-0 w-48 h-10 bg-black/80 rounded-full blur-xl z-0"></div>
+            
             {/* Outer glow effect */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            {isInView && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  animate={{
+                    y: [0, -10, 0],
+                  }}
+                  transition={{
+                    repeat: Number.POSITIVE_INFINITY,
+                    duration: 4,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <Image
+                    src="/hero-3dcloud.png"
+                    alt="Cloud Computing"
+                    width={330}
+                    height={330}
+                    className="filter blur-md opacity-60 animate-pulse"
+                    style={{
+                      filter: "blur(15px) brightness(1.3)",
+                    }}
+                  />
+                </motion.div>
+              </div>
+            )}
+
+            {/* Actual image on top */}
+            {isInView ? (
               <motion.div
+                className="relative z-10"
+                initial={{ opacity: 0, scale: 1.2, x: 50 }}
                 animate={{
                   y: [0, -10, 0],
+                  opacity: 1,
+                  scale: 1,
+                  x: 0,
                 }}
                 transition={{
                   repeat: Number.POSITIVE_INFINITY,
                   duration: 4,
                   ease: "easeInOut",
+                  opacity: { duration: 0.8, ease: "easeOut" },
+                  scale: { duration: 1, ease: "easeOut" },
+                  x: { duration: 1, ease: "easeOut" },
                 }}
               >
                 <Image
+                  priority={true}
                   src="/hero-3dcloud.png"
                   alt="Cloud Computing"
-                  width={330}
-                  height={330}
-                  className="filter blur-md opacity-60 animate-pulse"
-                  style={{
-                    filter: "blur(15px) brightness(1.3)",
-                  }}
+                  width={320}
+                  height={320}
+                  onLoad={onContentLoaded}
                 />
               </motion.div>
-            </div>{" "}
-            {/* Actual image on top */}
-            <motion.div
-              className="relative z-10"
-              initial={{ opacity: 0, scale: 1.2, x: 50 }}
-              animate={{
-                y: [0, -10, 0],
-                opacity: 1,
-                scale: 1,
-                x: 0,
-              }}
-              transition={{
-                repeat: Number.POSITIVE_INFINITY,
-                duration: 4,
-                ease: "easeInOut",
-                opacity: { duration: 0.8, ease: "easeOut" },
-                scale: { duration: 1, ease: "easeOut" },
-                x: { duration: 1, ease: "easeOut" },
-              }}
-            >
-              <Image
-                priority={true}
-                src="/hero-3dcloud.png"
-                alt="Cloud Computing"
-                width={320}
-                height={320}
-                onLoad={onContentLoaded}
-              />
-            </motion.div>
+            ) : (
+              <div className="relative z-10">
+                <Image
+                  priority={true}
+                  src="/hero-3dcloud.png"
+                  alt="Cloud Computing"
+                  width={320}
+                  height={320}
+                  onLoad={onContentLoaded}
+                />
+              </div>
+            )}
           </div>
         </ParallaxScroll>
       </div>
