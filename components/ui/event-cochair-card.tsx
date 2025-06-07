@@ -20,13 +20,13 @@ export function EventCoChairCard({
   className,
   cardClassName
 }: EventCoChairCardProps) {
-  return (
-    <motion.div
+  return (    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
       className={cn("relative", className)}
-    >      <div className={cn(
+    ><div className={cn(
         "group bg-black/20 rounded-2xl p-6 shadow-lg border border-blue-500/20 backdrop-blur-sm transition-all duration-300 flex flex-col items-center text-center min-h-[400px] justify-center",
         cardClassName
       )}>
