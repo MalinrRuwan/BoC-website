@@ -8,7 +8,8 @@ import Link from "next/link";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import ShinyText from "../ui/shiny-text";
 import StarBorder from "../ui/star-border";
-import { useEffect, useRef, useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useHeavyAnimationVisibility } from "@/hooks/use-intersection-observer";
 
 interface HeroSectionProps {
   onContentLoaded: () => void;
@@ -16,45 +17,39 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isInView, setIsInView] = useState(false);
+  const { ref: sectionRef, isIntersecting: isInView } = useHeavyAnimationVisibility<HTMLElement>();
+  const isMobile = useIsMobile();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the section is visible
-        rootMargin: "-10% 0px -10% 0px", // Add some margin for better UX
+  // Mobile-optimized animation settings
+  const floatingAnimation = isMobile 
+    ? {
+        y: [0, -5, 0], // Smaller movement
+        transition: {
+          repeat: Number.POSITIVE_INFINITY,
+          duration: 6, // Slower animation
+          ease: "easeInOut",
+        }
       }
-    );
-
-    const currentSection = sectionRef.current;
-    if (currentSection) {
-      observer.observe(currentSection);
-    }
-
-    return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
-    };
-  }, []);
+    : {
+        y: [0, -10, 0],
+        transition: {
+          repeat: Number.POSITIVE_INFINITY,
+          duration: 4,
+          ease: "easeInOut",        }
+      };
 
   return (
     <section
       ref={sectionRef}
       id="home"
       className="relative min-h-screen  flex items-center justify-center px-4 sm:px-6 lg:px-8"
-    >
-      <div className="absolute inset-0 z-0">
+    >      <div className="absolute inset-0 z-0">
         <SparklesCore
           id="tsparticlesfullpage"
           background="transparent"
           minSize={0.6}
           maxSize={1.4}
-          particleDensity={70}
+          particleDensity={isMobile ? 30 : 70} // Reduce particles on mobile
           className="w-full h-full"
           particleColor="#0ea5e9"
         />
@@ -103,20 +98,10 @@ export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionP
           <div className="relative w-80 h-80 flex items-center justify-center">
             {/* Shadow beneath the image */}
             <div className="absolute bottom-0 w-48 h-10 bg-black/80 rounded-full blur-xl z-0"></div>
-            
-            {/* Outer glow effect */}
-            {isInView && (
+              {/* Outer glow effect */}
+            {isInView && !isMobile && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    repeat: Number.POSITIVE_INFINITY,
-                    duration: 4,
-                    ease: "easeInOut",
-                  }}
-                >
+                <motion.div animate={floatingAnimation}>
                   <Image
                     src="/hero-3dcloud.png"
                     alt="Cloud Computing"
@@ -129,49 +114,24 @@ export function HeroSection({ onContentLoaded, isLoading = false }: HeroSectionP
                   />
                 </motion.div>
               </div>
-            )}
-
-            {/* Actual image on top */}
-            {isInView ? (
-              <motion.div
-                className="relative z-10"
-                initial={{ opacity: 0, scale: 1.2, x: 50 }}
-                animate={{
-                  y: [0, -10, 0],
-                  opacity: 1,
-                  scale: 1,
-                  x: 0,
-                }}
-                transition={{
-                  repeat: Number.POSITIVE_INFINITY,
-                  duration: 4,
-                  ease: "easeInOut",
-                  opacity: { duration: 0.8, ease: "easeOut" },
-                  scale: { duration: 1, ease: "easeOut" },
-                  x: { duration: 1, ease: "easeOut" },
-                }}
-              >
-                <Image
-                  priority={true}
-                  src="/hero-3dcloud.png"
-                  alt="Cloud Computing"
-                  width={320}
-                  height={320}
-                  onLoad={onContentLoaded}
-                />
-              </motion.div>
-            ) : (
-              <div className="relative z-10">
-                <Image
-                  priority={true}
-                  src="/hero-3dcloud.png"
-                  alt="Cloud Computing"
-                  width={320}
-                  height={320}
-                  onLoad={onContentLoaded}
-                />
-              </div>
-            )}
+            )}            {/* Actual image on top */}
+            <motion.div
+              animate={isInView && !isLoading ? floatingAnimation : {}}
+              className="relative z-10"
+              style={{ 
+                visibility: (isInView || isLoading) ? 'visible' : 'hidden',
+                opacity: (isInView || isLoading) ? 1 : 0
+              }}
+            >
+              <Image
+                priority={true}
+                src="/hero-3dcloud.png"
+                alt="Cloud Computing"
+                width={320}
+                height={320}
+                onLoad={onContentLoaded}
+              />
+            </motion.div>
           </div>
         </ParallaxScroll>
       </div>

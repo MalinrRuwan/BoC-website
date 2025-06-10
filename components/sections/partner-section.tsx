@@ -2,8 +2,9 @@ import Image from "next/image";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import { motion } from "framer-motion";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
-import { useEffect, useRef, useState } from "react";
 import { InfiniteMovingLogos } from "../ui/infinite-moving-logos";
+import { useInfiniteAnimationVisibility } from "@/hooks/use-intersection-observer";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Partner {
   id: number;
@@ -18,32 +19,8 @@ interface PartnerSectionProps {
 }
 
 export default function PartnerSection({ partners }: PartnerSectionProps) {
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  // Intersection Observer for performance
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "-10% 0px -10% 0px",
-      }
-    );
-
-    const currentSection = sectionRef.current;
-    if (currentSection) {
-      observer.observe(currentSection);
-    }
-
-    return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
-    };
-  }, []);
+  const { ref: sectionRef, isIntersecting: isInView } = useInfiniteAnimationVisibility<HTMLDivElement>();
+  const isMobile = useIsMobile();
 
   return (
     <div ref={sectionRef} className="mt-36">
@@ -51,9 +28,7 @@ export default function PartnerSection({ partners }: PartnerSectionProps) {
         <h2 className="text-4xl font-extrabold md:text-6xl text-center mb-16">
           Our <span className="text-blue-400">Partners</span>
         </h2>
-      </ScrollAnimation>
-
-      {isInView ? (
+      </ScrollAnimation>      {isInView ? (
         <InfiniteMovingLogos
           items={partners}
           direction="left"
@@ -62,7 +37,7 @@ export default function PartnerSection({ partners }: PartnerSectionProps) {
           className="py-8"
         />
       ) : (
-        <div className="flex gap-12 md:gap-16 justify-center w-full py-8">
+        <div className="flex gap-12 md:gap-16 justify-center w-full py-8 overflow-x-auto scrollbar-hide">
           {partners.map((partner) => (
             <div
               key={partner.id}
@@ -75,9 +50,11 @@ export default function PartnerSection({ partners }: PartnerSectionProps) {
                 height={partner.height || 100}
                 className="mx-auto object-contain"
                 style={{
-                  maxWidth: "100px",
-                  maxHeight: "100px",
+                  maxWidth: isMobile ? "80px" : "100px",
+                  maxHeight: isMobile ? "80px" : "100px",
                 }}
+                loading="lazy"
+                decoding="async"
               />
               <span className="mt-3 text-white/70 text-center font-medium text-sm">
                 {partner.name}

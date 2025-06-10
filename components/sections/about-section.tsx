@@ -7,35 +7,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import StarBorder from "../ui/star-border";
 import ShinyText from "../ui/shiny-text";
-import { useEffect, useRef, useState } from "react";
+import { useHeavyAnimationVisibility } from "@/hooks/use-intersection-observer";
 
 
 export function AboutSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the section is visible
-        rootMargin: "-10% 0px -10% 0px", // Add some margin for better UX
-      }
-    );
-
-    const currentSection = sectionRef.current;
-    if (currentSection) {
-      observer.observe(currentSection);
-    }
-
-    return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
-    };
-  }, []);
+  const { ref: sectionRef, isIntersecting: isInView } = useHeavyAnimationVisibility<HTMLElement>();
 
   return (
     <section ref={sectionRef} id="about" className="relative py-10 px-4 sm:px-6 lg:px-8">

@@ -1,6 +1,7 @@
 "use client"
 import { useRef, useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export type ParticlesProps = {
   className?: string
@@ -38,6 +39,12 @@ export const SparklesCore = ({
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
   const [particles, setParticles] = useState<any[]>([])
   const [animationId, setAnimationId] = useState<number | null>(null)
+  const isMobile = useIsMobile()
+
+  // Mobile-optimized parameters
+  const adjustedDensity = isMobile ? particleDensity * 0.3 : particleDensity
+  const adjustedSpeed = isMobile ? speed * 0.5 : speed
+  const frameRate = isMobile ? 30 : 60 // Reduce frame rate on mobile
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -56,22 +63,20 @@ export const SparklesCore = ({
     if (context && canvasRef.current) {
       initializeParticles()
       animateParticles()
-    }
-
-    function initializeParticles() {
+    }    function initializeParticles() {
       const canvas = canvasRef.current!
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
 
       const particlesArray = []
-      const particleCount = Math.floor((canvas.width * canvas.height) / (10000 / particleDensity))
+      const particleCount = Math.floor((canvas.width * canvas.height) / (10000 / adjustedDensity))
 
       for (let i = 0; i < particleCount; i++) {
         const size = Math.random() * (maxSize - minSize) + minSize
         const x = Math.random() * (canvas.width - size * 2)
         const y = Math.random() * (canvas.height - size * 2)
-        const directionX = (Math.random() * 2 - 1) * speed * 0.1
-        const directionY = (Math.random() * 2 - 1) * speed * 0.1
+        const directionX = (Math.random() * 2 - 1) * adjustedSpeed * 0.1
+        const directionY = (Math.random() * 2 - 1) * adjustedSpeed * 0.1
         const opacity = Math.random() * (maxOpacity - minOpacity) + minOpacity
 
         particlesArray.push({
@@ -85,35 +90,48 @@ export const SparklesCore = ({
       }
 
       setParticles(particlesArray)
-    }
-
-    function animateParticles() {
+    }    function animateParticles() {
       if (!context || !canvasRef.current) return
 
-      context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+      // Frame rate throttling for mobile
+      let lastFrameTime = 0
+      const targetInterval = 1000 / frameRate
 
-      particles.forEach((particle, index) => {
-        // Update particle position
-        particle.x += particle.directionX
-        particle.y += particle.directionY
-
-        // Boundary check
-        if (particle.x < 0 || particle.x > canvasRef.current!.width) {
-          particle.directionX = -particle.directionX
+      function animate(currentTime: number) {
+        if (currentTime - lastFrameTime < targetInterval) {
+          const id = requestAnimationFrame(animate)
+          setAnimationId(id)
+          return
         }
-        if (particle.y < 0 || particle.y > canvasRef.current!.height) {
-          particle.directionY = -particle.directionY
-        }
+        lastFrameTime = currentTime
 
-        // Draw particle
-        context.beginPath()
-        context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        context.fillStyle = `rgba(${hexToRgb(particleColor)}, ${particle.opacity})`
-        context.fill()
-      })
+        context.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height)
 
-      const id = requestAnimationFrame(animateParticles)
-      setAnimationId(id)
+        particles.forEach((particle, index) => {
+          // Update particle position
+          particle.x += particle.directionX
+          particle.y += particle.directionY
+
+          // Boundary check
+          if (particle.x < 0 || particle.x > canvasRef.current!.width) {
+            particle.directionX = -particle.directionX
+          }
+          if (particle.y < 0 || particle.y > canvasRef.current!.height) {
+            particle.directionY = -particle.directionY
+          }
+
+          // Draw particle
+          context.beginPath()
+          context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
+          context.fillStyle = `rgba(${hexToRgb(particleColor)}, ${particle.opacity})`
+          context.fill()
+        })
+
+        const id = requestAnimationFrame(animate)
+        setAnimationId(id)
+      }
+
+      animate(0)
     }
 
     function hexToRgb(hex: string) {
