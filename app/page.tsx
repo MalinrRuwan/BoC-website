@@ -103,7 +103,7 @@ export default function Home() {
     {
       id: 1,
       name: "CoDeKu DevOps Academy",
-      logo: "/codeku_logo.png",
+      logo: "/codeku-logo.png",
       height:300,
       width:300,
       
@@ -120,6 +120,34 @@ export default function Home() {
       id: 3,
       name: "Hack SL ",
       logo: "/hackhub_logo.png",
+      height:100,
+      width:100,
+    },
+    {
+      id: 4,
+      name: "Pepiliyana Timber Dealers",
+      logo: "/pepiliyana-timber-dealers.png",
+      height:100,
+      width:100,
+    },
+    {
+      id: 5,
+      name: "Global Ceylon",
+      logo: "/global-ceylon.png",
+      height:100,
+      width:100,
+    },
+    {
+      id: 6,
+      name: "DR Eco friendly bag",
+      logo: "/DR-Eco-friendly-bag.png",
+      height:100,
+      width:100,
+    },
+    {
+      id: 7,
+      name: "Pearl Bay",
+      logo: "/pearl-bay.png",
       height:100,
       width:100,
     },
