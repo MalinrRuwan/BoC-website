@@ -112,8 +112,8 @@ export default function Home() {
       id: 2,
       name: "AWS User Group Colombo",
       logo: "/aws_logo.png",
-      height:200,
-      width:200,
+      height:300,
+      width:300,
 
     },
     {
