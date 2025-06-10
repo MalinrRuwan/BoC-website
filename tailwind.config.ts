@@ -103,20 +103,25 @@ const config: Config = {
         "star-movement-bottom": {
           "0%": { transform: "translate(0%, 0%)", opacity: "1" },
           "100%": { transform: "translate(-100%, 0%)", opacity: "0" },
-        },
-        "star-movement-top": {
+        },        "star-movement-top": {
           "0%": { transform: "translate(0%, 0%)", opacity: "1" },
           "100%": { transform: "translate(100%, 0%)", opacity: "0" },
+        },
+        "scroll-logos": {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        shine: "shine 5s linear infinite",
-        "star-movement-bottom":
+        shine: "shine 5s linear infinite",        "star-movement-bottom":
           "star-movement-bottom linear infinite alternate",
         "star-movement-top": "star-movement-top linear infinite alternate",
+        "scroll-logos": 
+          "scroll-logos var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
     },
   },
