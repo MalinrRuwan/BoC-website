@@ -129,7 +129,7 @@ export function AboutSection() {
                   whileTap={{ scale: 0.95 }}
                   className="my-3 self-start"
                 >
-                  <Link href="https://google.com">
+                  <Link href="https://drive.google.com/file/d/1JtaRYuxW6vG5CcG7jCZ3Mp0a732d1pbo/view?usp=drivesdk">
                     <StarBorder speed="3s" className="rounded-3xl" as="button">
                       <div className=" text-white over:bg-blue-700 transition-all mx-1">
                         <ShinyText
