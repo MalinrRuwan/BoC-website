@@ -15,7 +15,7 @@ interface Logo {
 export const InfiniteMovingLogos = ({
   items,
   direction = "left",
-  speed = "slow",
+  speed = "fast",
   pauseOnHover = true,
   className,
 }: {
@@ -70,7 +70,7 @@ export const InfiniteMovingLogos = ({
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
+        containerRef.current.style.setProperty("--animation-duration", "10s"); // Changed from 20s
       } else if (speed === "normal") {
         containerRef.current.style.setProperty("--animation-duration", "40s");
       } else {
@@ -99,7 +99,9 @@ export const InfiniteMovingLogos = ({
           <div
             key={`${item.id}-${idx}`}
             className="relative flex-shrink-0 flex flex-col items-center justify-center min-w-[180px] md:min-w-[220px] group"
-          >            <div className="relative transition-all duration-300 group-hover:scale-110 group-hover:brightness-110">
+          >
+            {" "}
+            <div className="relative transition-all duration-300 group-hover:scale-110 group-hover:brightness-110">
               <Image
                 src={item.logo || "/placeholder.svg"}
                 alt={item.name}
