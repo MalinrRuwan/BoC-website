@@ -42,7 +42,7 @@ export function TeamSection({ teamMembers = [] }: TeamSectionProps) {
       id: 2,
       name: "Manuja Wimalarathne",
       designation: "Event Co-Chair",
-      image: "/manuja wimalarathne-event co chair.png",
+      image: "/manuja wimalarathne-event co chair.webp",
     }
   ];
   
