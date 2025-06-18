@@ -151,6 +151,20 @@ export default function Home() {
       height:100,
       width:100,
     },
+    {
+      id: 8,
+      name: "VIUKON",
+      logo: "/viukon.png",
+      height:100,
+      width:100,
+    },
+    {
+      id: 9,
+      name: "Global Ceylon",
+      logo: "/global-ceylon.png",
+      height:100,
+      width:100,
+    },
   ];
 
   useEffect(() => {
