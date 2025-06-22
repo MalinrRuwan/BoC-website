@@ -97,6 +97,55 @@ export default function Home() {
       description:
         "Join our upcoming workshop to  deepen your programming skills  and explore new technologies under expert guidance. Take your coding journey to the next level with CoDeku!",
     },
+    {
+      id: 6,
+      date: "28 May 2025",
+      title: "Ideathon: Prototype Phase Registration Opens",
+      description:
+        "The Ideathon will advance to the Prototype Phase as registration opens. Teams will have the opportunity to sign up and prepare to transform their innovative concepts into working prototypes.",
+    },
+    {
+      id: 7,
+      date: "25 June 2025",
+      title: "Ideathon: Prototype Submissions Open",
+      description:
+        "The submission period for the Prototype Phase will commence. Participating teams can begin to submit their completed prototypes for evaluation, showcasing their hard work and innovation.",
+    },
+    {
+      id: 8,
+      date: "4 July 2025",
+      title: "Ideathon: Prototype Registration Closes",
+      description:
+        "Registration for the Ideathon's Prototype Phase will officially close, marking the final opportunity for new teams to enter this stage of the competition.",
+    },
+    {
+      id: 9,
+      date: "5 July 2025",
+      title: "Ideathon: Judging Criteria Release",
+      description:
+        "The official judging criteria for the Ideathon will be released. This will provide all teams with clear guidelines on the metrics for success, helping them to refine their prototypes accordingly.",
+    },
+    {
+      id: 10,
+      date: "23 July 2025",
+      title: "Ideathon: Prototype Submissions Close",
+      description:
+        "The submission window for the Prototype Phase will close. All prototypes will then enter the evaluation stage, where they will be reviewed by our panel of judges.",
+    },
+    {
+      id: 11,
+      date: "30 July 2025",
+      title: "Ideathon: Finalists Announced",
+      description:
+        "The teams selected to advance to the Grand Finale will be announced. These finalists will have the chance to compete in the final Builderthon and Pitch-a-thon.",
+    },
+    {
+      id: 12,
+      date: "8-9 Aug 2025",
+      title: "Builderthon & Pitch-a-thon",
+      description:
+        "The competition will conclude with the Grand Finale, a two day event featuring a Builderthon and Pitch-a-thon. Finalist teams will build and present their final products to claim the championship title.",
+    },
   ]; // Gallery images are now defined directly in the GallerySection component
 
   const partners = [
