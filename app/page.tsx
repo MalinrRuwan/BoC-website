@@ -144,7 +144,7 @@ export default function Home() {
       date: "8-9 Aug 2025",
       title: "Builderthon & Pitch-a-thon",
       description:
-        "The competition will conclude with the Grand Finale, a two day event featuring a Builderthon and Pitch-a-thon. Finalist teams will build and present their final products to claim the championship title.",
+        "The competition will conclude with the Grand Finale, a 24 hour event featuring a Builderthon and Pitch-a-thon. Finalist teams will build and present their final products to claim the championship title.",
     },
   ]; // Gallery images are now defined directly in the GallerySection component
 
